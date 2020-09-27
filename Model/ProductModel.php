@@ -5,11 +5,11 @@ class ProductModel{
     private $db;
 
     function __construct(){
-        $this->db = new PDO('mysql:host=localhost;'.'dbname=....;charset=utf8', 'root', '');
+        $this->db = new PDO('mysql:host=localhost;'.'dbname=store;charset=utf8', 'root', '');
     }
        
     function getProducts(){
-          $sentencia = $this->db->prepare("SELECT * FROM Product");
+          $sentencia = $this->db->prepare("SELECT * FROM product");
           $sentencia->execute();
           return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
@@ -21,8 +21,8 @@ class ProductModel{
     }
 
     function getProductCategory(){
-        $sentencia = $this->db->prepare("SELECT Product.*, Category.nombre
-         FROM Product JOIN Category ON Product.id_category = Category.id_category");
+        $sentencia = $this->db->prepare("SELECT product.*, category.*
+         FROM product JOIN category ON product.id_category = category.id_category");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
 

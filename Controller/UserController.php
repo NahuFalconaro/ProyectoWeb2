@@ -1,7 +1,7 @@
 <?php
 
-require_once "./View/TasksView.php";
-require_once "./Model/TasksModel.php";
+require_once "./View/UserView.php";
+require_once "./Model/UserModel.php";
 
 class TasksController{
 

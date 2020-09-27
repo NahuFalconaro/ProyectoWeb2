@@ -3,28 +3,28 @@
 require_once "./View/ProductView.php";
 require_once  "./Model/ProductModel.php";
 
-class TasksController{
+class ProductController{
 
     private $view;
     private $model;
 
     function __construct(){
-        $this->view = new TasksView();
-        $this->model = new TasksModel();
+        $this->view = new ProductView();
+        $this->model = new ProductModel();
 
     }
 
-    function home(){
-        $tasks = $this->model->GetTasks();
-        $this->view->showHome($tasks);
+    function Home(){
+       // $tasks = $this->model->GetTasks();
+        $this->view->Home();
     }
     function showProducts(){
-        $tasks = $this->model->getProducts();
-        $this->view->showHome($tasks);
+        $Products = $this->model->getProductCategory();
+        $this->view->showProducts($Products);
     }
     function showProduct($id){
-        $tasks = $this->model->getProduct();
-        $this->view->showHome($tasks);
+        $products = $this->model->getProduct();
+        $this->view->showProducts($products);
     }
     function showProductCategory(){
         $tasks = $this->model->getProductCategory();

@@ -8,10 +8,10 @@
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
 
     $r = new Router();
-
+    $r->addRoute("home", "GET", "ProductController", "Home");
+    
     // rutas
-    //$r->addRoute("home", "GET", "UserController", "Home");
-    $r->addRoute("productos", "GET", "ProductController", "Products");
+    $r->addRoute("productos", "GET", "ProductController", "showProducts");
     $r->addRoute("productos", "GET", "CategoryController", "Categories");
     $r->addRoute("productos/:ID", "GET", "CategoryController", "ProductID");
 
@@ -26,7 +26,7 @@
     $r->addRoute("deletecategory/:ID", "GET", "CategoryController", "BorrarLaCategoriaQueVienePorParametro");
 
     //Ruta por defecto.
-    //$r->setDefaultRoute("", "Home");
+    $r->setDefaultRoute("ProductController", "Home");
 
 
 

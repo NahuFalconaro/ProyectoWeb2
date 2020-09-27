@@ -1,9 +1,9 @@
 <?php
 
-require_once "./View/TasksView.php";
-require_once "./Model/TasksModel.php";
+require_once "./View/CategoryView.php";
+require_once "./Model/CategoryModel.php";
 
-class TasksController{
+class CategoryController{
 
     private $view;
     private $model;
@@ -14,10 +14,10 @@ class TasksController{
 
     }
 
-    function showCategory(){
-        $category = $this->model->getCategory();
-        $this->view->showHome($category);
-    }
+    //function showCategory(){
+       // $category = $this->model->getCategory();
+      //  $this->view->showHome($category);
+    //}
 
     function insertCategory(){
         $category_id = $_POST['name'];
