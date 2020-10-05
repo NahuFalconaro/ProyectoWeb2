@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-09-2020 a las 02:38:47
+-- Tiempo de generación: 05-10-2020 a las 03:43:27
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -36,10 +36,10 @@ CREATE TABLE `category` (
 -- Volcado de datos para la tabla `category`
 --
 
-INSERT INTO `category` (`id_category`, `name`) VALUES
-(1, 'category1'),
-(2, 'category2'),
-(3, 'category3');
+INSERT INTO `category` (`id_category`, `category`) VALUES
+(10, 'asdasd'),
+(11, 'category nueva'),
+(12, 'asd');
 
 -- --------------------------------------------------------
 
@@ -49,10 +49,10 @@ INSERT INTO `category` (`id_category`, `name`) VALUES
 
 CREATE TABLE `product` (
   `id_product` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
   `price` double NOT NULL,
   `stock` int(11) NOT NULL,
-  `description` varchar(200) NOT NULL,
+  `descripcion` varchar(200) NOT NULL,
   `id_category` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -60,8 +60,8 @@ CREATE TABLE `product` (
 -- Volcado de datos para la tabla `product`
 --
 
-INSERT INTO `product` (`id_product`, `name`, `price`, `stock`, `description`, `id_category`) VALUES
-(1, 'ejemplo1', 20, 3, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 2);
+INSERT INTO `product` (`id_product`, `nombre`, `price`, `stock`, `descripcion`, `id_category`) VALUES
+(46, 'nahuel', 77777, 1, 'Example', 10);
 
 -- --------------------------------------------------------
 
@@ -72,8 +72,16 @@ INSERT INTO `product` (`id_product`, `name`, `price`, `stock`, `description`, `i
 CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
   `user` varchar(20) NOT NULL,
-  `password` varchar(10) NOT NULL
+  `password` varchar(250) NOT NULL,
+  `access` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `user`
+--
+
+INSERT INTO `user` (`id_user`, `user`, `password`, `access`) VALUES
+(2, 'admin', '$2y$12$45g40/fy5QBMxqkDVgJZuugRPZG9PLIEiYvlSwfn/jlA2PZk4rsDm', 1);
 
 --
 -- Índices para tablas volcadas
@@ -106,19 +114,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `category`
 --
 ALTER TABLE `category`
-  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

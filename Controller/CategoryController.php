@@ -19,12 +19,22 @@ class CategoryController{
         $this->modelProduct = new ProductModel();
 
     }
-
+    function getAccess(){
+        session_start();
+        if(isset($_SESSION['ID_USER'])){
+            $loged = $this->modelUser->getUser($_SESSION['ID_USER']);
+            return $loged->access;
+        }else{
+            return 0;
+        }
+        
     function showCategory(){
         $Category = $this->model->getCategory();
-        $this->view->getCategories($Category);
+        $logged = $this->getAccess();
+        $this->view->showCategorys($Category, $logged);
     }
 
+    }
     function insertCategory(){
         $category = $_POST['nameCategory'];
         $this->model->insertCategory($category);

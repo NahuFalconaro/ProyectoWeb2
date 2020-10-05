@@ -39,8 +39,8 @@ class ProductController{
     }
 
     function Home(){
-       // $tasks = $this->model->GetTasks();
-        $this->view->Home();
+        $logged = $this->getAccess();;
+        $this->view->Home($logged);
     }
     function getAccess(){
         session_start();
@@ -59,13 +59,15 @@ class ProductController{
     }
     function showProduct($params = null){
         $id = $params[':ID'];
-        $Product = $this->model->getProduct($id);    
-        $this->view->showProduct($Product);
+        $Product = $this->model->getProduct($id); 
+        $logged = $this->getAccess();   
+        $this->view->showProduct($Product, $logged);
     }
     function showProductCategory($params = null){
         $id = $params[':ID'];
+        $logged = $this->getAccess();  
         $category = $this->model->getProductCategory($id);
-        $this->view->showProductsCategory($category);
+        $this->view->showProductsCategory($category, $logged);
     }
 
     function insertProduct(){

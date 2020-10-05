@@ -11,9 +11,10 @@ class CategoryView{
         $this ->title = "Tienda comercial";
     }
 
-    function showCategorys($Category){
+    function showCategorys($Category, $logged){
         $smarty = new Smarty();
         $smarty->assing('Category', $Category);
+        $smarty->assign('logged', $logged);
         $smarty->display('./Template/products.tpl');
     }
   

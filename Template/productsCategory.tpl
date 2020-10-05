@@ -1,6 +1,6 @@
 {include file='./header.tpl'}
-<div class="container">
-    <table class="table">
+<div class="container " style="margin-top: 50px;">
+    <table class="table localTable">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">id producto</th>

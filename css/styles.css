@@ -1,0 +1,18 @@
+.localTable{
+    border: solid black !important;
+    border-color: black !important;
+    margin-top: 40px !important;
+
+    
+}
+.img{
+    width: 250px !important;
+    height: 250px !important;
+}
+.carrouselLocal{
+    width: 80% !important;
+    height: 300px !important; 
+}
+.example{
+    width: 50% !important;
+}
