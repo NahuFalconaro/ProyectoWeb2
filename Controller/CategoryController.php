@@ -1,40 +1,48 @@
 <?php
 
 require_once "./View/CategoryView.php";
+require_once "./View/ProductView.php";
 require_once "./Model/CategoryModel.php";
+require_once "./Model/ProductModel.php";
 
 class CategoryController{
 
     private $view;
     private $model;
+    private $viewProduct;
+    private $modelProduct;
 
     function __construct(){
         $this->view = new CategoryView();
+        $this->viewProduct = new ProductView();
         $this->model = new CategoryModel();
+        $this->modelProduct = new ProductModel();
 
     }
 
-    //function showCategory(){
-       // $category = $this->model->getCategory();
-      //  $this->view->showHome($category);
-    //}
+    function showCategory(){
+        $Category = $this->model->getCategory();
+        $this->view->getCategories($Category);
+    }
 
     function insertCategory(){
-        $category_id = $_POST['name'];
-        $this->model->insertCategory($category_id);
-        $this->view->showProductsByCategories();
+        $category = $_POST['nameCategory'];
+        $this->model->insertCategory($category);
+        $this->viewProduct->ShowHomeLocation();
     }
 
     function deleteCategory($params = null){
         $category_id = $params[':ID'];
-        $this->model->deleteCategory($category_id);
-        $this->view->showProductsByCategories();
+        $this->modelProduct->deleteProductCategory($category_id);
+        $this->model->deleteCategory($category_id);        
+        $this->viewProduct->ShowHomeLocation();
     }
 
     function updateCategory($params = null){
         $category_id = $params[':ID'];
-        $this->model->updateCategory($category_id);
-        $this->view->showProductsByCategories();
+        $nombre= $_POST['nombreUpdateCategory'];
+        $this->model->updateCategory($category_id,$nombre);
+        $this->viewProduct->ShowHomeLocation();
     }
 }
 

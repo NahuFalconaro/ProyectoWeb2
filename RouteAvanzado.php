@@ -6,25 +6,38 @@
     
     // CONSTANTES PARA RUTEO
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
+    define("LOGIN", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/login');
+    define("LOGOUT", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/logout');
+
+
+
 
     $r = new Router();
     $r->addRoute("home", "GET", "ProductController", "Home");
     
     // rutas
     $r->addRoute("productos", "GET", "ProductController", "showProducts");
-    $r->addRoute("productos", "GET", "CategoryController", "Categories");
-    $r->addRoute("productos/:ID", "GET", "CategoryController", "ProductID");
+    //$r->addRoute("productos", "GET", "CategoryController", "showCategory");
+    $r->addRoute("productos/:ID", "GET", "ProductController", "showProduct");
+    $r->addRoute("category/:ID", "GET", "ProductController", "showProductCategory");
+    $r->addRoute("login", "GET", "UserController", "Login");
+    $r->addRoute("logout", "GET", "UserController", "Logout");
+
+    $r->addRoute("verifyUser", "POST", "UserController", "verifyUser");
+
 
     //Esto lo veo en View
-    $r->addRoute("insertproduct", "POST", "ProductController", "InsertProduct");
-    $r->addRoute("insertcategory", "POST", "CategoryController", "InsertCategory");
+    $r->addRoute("insert", "POST", "ProductController", "insertProduct");
+    $r->addRoute("insertCategory", "POST", "CategoryController", "insertCategory");
     $r->addRoute("insertuser", "POST", "UserController", "InsertUser");
     
-
+   
     $r->addRoute("deleteuser/:ID", "GET", "ProductController", "BorrarElProdcutoQueVienePorParametro");
-    $r->addRoute("deleteproduct/:ID", "GET", "UserController", "BorrarElUsuarioQueVienePorParametro");
-    $r->addRoute("deletecategory/:ID", "GET", "CategoryController", "BorrarLaCategoriaQueVienePorParametro");
+    $r->addRoute("delete/:ID", "GET", "ProductController", "deleteProduct");
+    $r->addRoute("deleteCategory/:ID", "GET", "CategoryController", "deleteCategory");
 
+    $r->addRoute("update/:ID", "POST", "ProductController", "updateProduct");
+    $r->addRoute("updateCategory/:ID", "POST", "CategoryController", "updateCategory");
     //Ruta por defecto.
     $r->setDefaultRoute("ProductController", "Home");
 

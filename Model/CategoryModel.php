@@ -8,28 +8,35 @@ class CategoryModel{
         $this->db = new PDO('mysql:host=localhost;'.'dbname=store;charset=utf8', 'root', '');
     }
          
-      function getCategory(){
-          $sentencia = $this->db->prepare("SELECT * FROM Category");
+      function getCategories(){
+          $sentencia = $this->db->prepare("SELECT * FROM category");
           $sentencia->execute();
           return $sentencia->fetchAll(PDO::FETCH_OBJ);
       }
+      function getCategory($id){
+        
+        $sentencia = $this->db->prepare("SELECT * FROM category WHERE category.id_category = ?");
+        $sentencia->execute(array($id));
+        return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
 
+
     //ADMIN
-    function insertCategory($name){
-        $sentencia = $this->db->prepare("INSERT INTO Category(name) VALUES(?)");
-        $sentencia->execute(array($name));
+    function insertCategory($category){
+        $sentencia = $this->db->prepare("INSERT INTO category(category) VALUES (?)");
+        $sentencia->execute(array($category));
       }
 
        function deleteCategory($id_category){
-           $sentencia = $this->db->prepare("DELETE FROM Category WHERE id_category=?");
+           $sentencia = $this->db->prepare("DELETE FROM category WHERE id_category=?");
            $sentencia->execute(array($id_category));
       }
 
        function updateCategory($id_category,$name){
-           $sentencia = $this->db->prepare("UPDATE Category SET name=? WHERE id_category=?");
-           $sentencia->execute(array($name));
+           $sentencia = $this->db->prepare("UPDATE category SET category=? WHERE id_category=?");
+           $sentencia->execute(array($name,$id_category));
        }
+    }
        
 ?> 

@@ -8,16 +8,15 @@ class CategoryView{
     private $title;
 
     function __construct(){
-        $this -> title = "Tienda comercial";
+        $this ->title = "Tienda comercial";
     }
 
-    function showCategorys($categorys){
+    function showCategorys($Category){
         $smarty = new Smarty();
-        $smarty->assing('title', $this->title);
-        $smarty->assing('category', $categorys);
-        $smarty->display('Template/products.tpl');
+        $smarty->assing('Category', $Category);
+        $smarty->display('./Template/products.tpl');
     }
-
+  
 }
 
 
