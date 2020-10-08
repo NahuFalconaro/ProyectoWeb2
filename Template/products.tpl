@@ -1,9 +1,9 @@
 {include file='./header.tpl'}
-<section class="localTable">
-    <div class="container ">
+<section>
+    <div class="container" >
         {if $logged == 1}
-            <form action="insert" method="POST">
-                <div class="form-row">
+            <form action="insert" method="POST" >
+                <div class="form-row  form"  >
                     <div class="col">
                         <input type="text" class="form-control" name="nombre" placeholder="Nombre Producto">
                     </div>
@@ -30,11 +30,14 @@
             </form>
         {/if}
     </div>
-    <div class="container localTable">
-        <table class="table ">
+    <div class="container">
+    {if $logged == 1}
+        <table class="table table-striped table-dark tabla table-responsive-md " style="margin-top: 50px;">
+    {else}
+        <table class="table table-striped table-dark tabla table-responsive-md " style="margin-top: 150px;">
+    {/if} 
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">id producto</th>
                     <th scope="col">nombre</th>
                     <th scope="col">precio</th>
                     <th scope="col">stock</th>
@@ -48,7 +51,7 @@
             <tbody>
                 {foreach from=$Products item=product}
                     <tr>
-                        <th scope="col">{$product->id_product}</th>
+
                         <th scope="col">{$product->nombre}</th>
                         <th scope="col">{$product->price}</th>
                         <th scope="col">{$product->stock}</th>
@@ -105,8 +108,7 @@
     {/foreach}
     </tbody>
 
-
-    <table class="table localTable">
+    <table class="table table-striped table-dark tabla table-responsive-md margentabla">
         {if $logged == 1}
             <form action="insertCategory" method="POST">
                 <div class="form-row ">
@@ -121,7 +123,7 @@
         {/if}
         <thead class="thead-dark">
             <tr>
-                <th scope="col">id category</th>
+
                 <th scope="col">nombre</th>
                 {if $logged == 1}
                     <th scope="col">eliminar</th>
@@ -132,8 +134,8 @@
         <tbody>
             {foreach from=$Category item=category}
                 <tr>
-                    <th scope="row">{$category->id_category}</th>
-                    <th scope="col"><a href="category/{$category->id_category}">{$category->category}</a></th>
+
+                    <th scope="col"><a href="category/{$category->id_category}"  class="letterCategory">{$category->category}</a></th>
                     {if $logged == 1}
                         <th scope="col"><a href="deleteCategory/{$category->id_category}" class="btn btn-dark" value="{$category->id_category}">Eliminar</a></th>
                         <th><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal{$category->id_category}">Modificar</button></th>

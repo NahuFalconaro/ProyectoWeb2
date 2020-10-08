@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-10-2020 a las 03:43:27
+-- Tiempo de generación: 09-10-2020 a las 00:25:08
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -37,9 +37,9 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id_category`, `category`) VALUES
-(10, 'asdasd'),
-(11, 'category nueva'),
-(12, 'asd');
+(13, 'Zapatilla'),
+(14, 'Buzo'),
+(15, 'Remera');
 
 -- --------------------------------------------------------
 
@@ -61,7 +61,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id_product`, `nombre`, `price`, `stock`, `descripcion`, `id_category`) VALUES
-(46, 'nahuel', 77777, 1, 'Example', 10);
+(50, 'Zapatillas', 9999, 6, 'Zapatillas Claves', 13),
+(51, 'Buzo Rojo', 5469, 9, 'Buzo rojo', 14);
 
 -- --------------------------------------------------------
 
@@ -114,13 +115,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `category`
 --
 ALTER TABLE `category`
-  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT de la tabla `user`

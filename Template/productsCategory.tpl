@@ -1,9 +1,9 @@
 {include file='./header.tpl'}
-<div class="container " style="margin-top: 50px;">
-    <table class="table localTable">
+<div class="container marginSection" style="margin-top: 120px">
+    <table class="table ">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">id producto</th>
+
                 <th scope="col">nombre</th>
                 <th scope="col">precio</th>
                 <th scope="col">stock</th>
@@ -14,7 +14,7 @@
         <tbody>
             {foreach from=$Category item=category}
                 <tr>
-                    <th scope="col">{$category->id_product}</th>
+
                     <th scope="col">{$category->nombre}</th>
                     <th scope="col">{$category->price}</th>
                     <th scope="col">{$category->stock}</th>
@@ -25,4 +25,4 @@
         </tbody>
     </table>
 </div>
-{include file='./footer.tpl'}
+{*{include file='./footer.tpl'}*}

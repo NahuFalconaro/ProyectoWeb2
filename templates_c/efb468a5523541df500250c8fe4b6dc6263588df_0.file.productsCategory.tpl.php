@@ -1,32 +1,31 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-10-05 05:16:58
+/* Smarty version 3.1.34-dev-7, created on 2020-10-09 00:09:34
   from 'C:\xampp\htdocs\TPWEB2\Template\productsCategory.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f7a902ae2e387_28815375',
+  'unifunc' => 'content_5f7f8e1e4ffc29_09466074',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'efb468a5523541df500250c8fe4b6dc6263588df' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPWEB2\\Template\\productsCategory.tpl',
-      1 => 1601867815,
+      1 => 1602194971,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:./header.tpl' => 1,
-    'file:./footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f7a902ae2e387_28815375 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7f8e1e4ffc29_09466074 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:./header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-<div class="container " style="margin-top: 50px;">
-    <table class="table localTable">
+<div class="container marginSection" style="margin-top: 120px">
+    <table class="table ">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">id producto</th>
@@ -64,6 +63,5 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </tbody>
     </table>
 </div>
-<?php $_smarty_tpl->_subTemplateRender('file:./footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-}
+<?php }
 }

@@ -31,8 +31,8 @@ class ProductView{
         $smarty = new Smarty();
         $smarty->assign('Product', $Product);
         $smarty->assign('logged', $logged);
-        $smarty->assign('Category');
-        $smarty->display('Template/product.tpl');
+       
+        $smarty->display('./Template/product.tpl');
     }
 
     function ShowHomeLocation(){
@@ -42,3 +42,5 @@ class ProductView{
 }
 
 ?>
+
+

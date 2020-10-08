@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-10-05 05:19:25
+/* Smarty version 3.1.34-dev-7, created on 2020-10-09 00:23:09
   from 'C:\xampp\htdocs\TPWEB2\Template\products.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f7a90bd277871_68023813',
+  'unifunc' => 'content_5f7f914dc76ff6_85752799',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '10991282e52c3145b705b5be4ba3c814762833e2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPWEB2\\Template\\products.tpl',
-      1 => 1601867961,
+      1 => 1602195786,
       2 => 'file',
     ),
   ),
@@ -22,14 +22,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:./footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f7a90bd277871_68023813 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7f914dc76ff6_85752799 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:./header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-<section class="localTable">
-    <div class="container ">
+<section>
+    <div class="container" >
         <?php if ($_smarty_tpl->tpl_vars['logged']->value == 1) {?>
-            <form action="insert" method="POST">
-                <div class="form-row">
+            <form action="insert" method="POST" >
+                <div class="form-row  form"  >
                     <div class="col">
                         <input type="text" class="form-control" name="nombre" placeholder="Nombre Producto">
                     </div>
@@ -65,11 +65,14 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </form>
         <?php }?>
     </div>
-    <div class="container localTable">
-        <table class="table ">
+    <div class="container">
+    <?php if ($_smarty_tpl->tpl_vars['logged']->value == 1) {?>
+        <table class="table table-striped table-dark tabla table-responsive-md " style="margin-top: 50px;">
+    <?php } else { ?>
+        <table class="table table-striped table-dark tabla table-responsive-md " style="margin-top: 150px;">
+    <?php }?> 
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">id producto</th>
                     <th scope="col">nombre</th>
                     <th scope="col">precio</th>
                     <th scope="col">stock</th>
@@ -88,8 +91,7 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['product']->value
 $_smarty_tpl->tpl_vars['product']->do_else = false;
 ?>
                     <tr>
-                        <th scope="col"><?php echo $_smarty_tpl->tpl_vars['product']->value->id_product;?>
-</th>
+
                         <th scope="col"><?php echo $_smarty_tpl->tpl_vars['product']->value->nombre;?>
 </th>
                         <th scope="col"><?php echo $_smarty_tpl->tpl_vars['product']->value->price;?>
@@ -171,8 +173,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </tbody>
 
-
-    <table class="table localTable">
+    <table class="table table-striped table-dark tabla table-responsive-md margentabla">
         <?php if ($_smarty_tpl->tpl_vars['logged']->value == 1) {?>
             <form action="insertCategory" method="POST">
                 <div class="form-row ">
@@ -187,7 +188,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         <?php }?>
         <thead class="thead-dark">
             <tr>
-                <th scope="col">id category</th>
+
                 <th scope="col">nombre</th>
                 <?php if ($_smarty_tpl->tpl_vars['logged']->value == 1) {?>
                     <th scope="col">eliminar</th>
@@ -203,10 +204,9 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['category']->valu
 $_smarty_tpl->tpl_vars['category']->do_else = false;
 ?>
                 <tr>
-                    <th scope="row"><?php echo $_smarty_tpl->tpl_vars['category']->value->id_category;?>
-</th>
+
                     <th scope="col"><a href="category/<?php echo $_smarty_tpl->tpl_vars['category']->value->id_category;?>
-"><?php echo $_smarty_tpl->tpl_vars['category']->value->category;?>
+"  class="letterCategory"><?php echo $_smarty_tpl->tpl_vars['category']->value->category;?>
 </a></th>
                     <?php if ($_smarty_tpl->tpl_vars['logged']->value == 1) {?>
                         <th scope="col"><a href="deleteCategory/<?php echo $_smarty_tpl->tpl_vars['category']->value->id_category;?>

@@ -1,6 +1,6 @@
 {include file='./header.tpl'}
 
-<div class="card container-fluid localTable" style="width: 18rem; margin-top: 60px/*">
+<div class="card container-fluid" style="width: 18rem; margin-top: 60px/*">
   <img src="images/58f800703a91328fe6b19291714fb0bf.jpg" class="card-img-top"  alt="...">
   <div class="card-body">
     <h5 class="card-title">{$Product->nombre}</h5>
@@ -14,4 +14,4 @@
   </ul>
 </div>
 
-{include file='./footer.tpl'}
+{*{include file='./footer.tpl'}*}
