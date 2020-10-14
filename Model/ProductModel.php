@@ -9,7 +9,7 @@ class ProductModel{
     }
        
     function getProducts(){
-          $sentencia = $this->db->prepare("SELECT * FROM product");
+          $sentencia = $this->db->prepare("SELECT product.*, category.* FROM product INNER JOIN category ON product.id_category = category.id_category");
           $sentencia->execute();
           return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }

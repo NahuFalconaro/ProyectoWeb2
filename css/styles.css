@@ -6,11 +6,7 @@
     article{
         margin-top: 90px !important;
     }
-    body{
-        background-image: url('../images/fondo3.png');
-        background-size: 100%;
-        background-repeat: no-repeat;
-    }
+
     .sedes{
         height: 200px !important;
         padding-top: 10px !important;

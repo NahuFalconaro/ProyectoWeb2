@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-10-2020 a las 00:25:08
+-- Tiempo de generación: 15-10-2020 a las 01:43:56
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -37,9 +37,9 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id_category`, `category`) VALUES
-(13, 'Zapatilla'),
 (14, 'Buzo'),
-(15, 'Remera');
+(15, 'Remera'),
+(16, 'categoria');
 
 -- --------------------------------------------------------
 
@@ -61,8 +61,10 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id_product`, `nombre`, `price`, `stock`, `descripcion`, `id_category`) VALUES
-(50, 'Zapatillas', 9999, 6, 'Zapatillas Claves', 13),
-(51, 'Buzo Rojo', 5469, 9, 'Buzo rojo', 14);
+(51, 'Buzo Roj', 4444, 45, 'descripciondescripciondescripciondescripcion', 14),
+(53, 'producto1', 123123, 1, 'qasasd', 14),
+(54, 'producto2', 333, 444, 'asdasdasdasd', 15),
+(55, 'Zapatillas', 400, 3, 'Zapatillas Claves', 16);
 
 -- --------------------------------------------------------
 
@@ -115,13 +117,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `category`
 --
 ALTER TABLE `category`
-  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
