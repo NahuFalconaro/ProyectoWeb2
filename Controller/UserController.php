@@ -45,7 +45,7 @@ class UserController{
            $_SESSION['LAST_ACTIVITY'] = time();
            $this->viewProducts->showHomeLocation();
        }else{
-           $this->viewProducts->Home();
+           $this->viewProducts->Home(0);
        }
     }
 
