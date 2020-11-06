@@ -10,8 +10,24 @@
     <li class="list-group-item">{$Product->stock}</li>
     <li class="list-group-item">{$Product->descripcion}</li>
     <li class="list-group-item">{$Product->category}</li>
-
   </ul>
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Usuario</th>
+        <th scope="col">Comentario</th>
+        <th scope="col">Puntaje</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Usuario1</th>
+        <td>Comentario1></td>
+        <td>Puntaje1</td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>
 
 {*{include file='./footer.tpl'}*}
