@@ -8,11 +8,13 @@
     </tr>
   </thead>
   <tbody>
+  {foreach from=$Users item=user}
     <tr>
-      <th scope="row">1</th>
-      <td><button> Admin Permisos Add/Delete <button></td>
-      <td><button> Delete User <button></td>
+      <th scope="row">{$user->name}</th>
+      <th scope="row"><a href="modifyAdmin/{$user->id_user}" class="btn btn-dark" value="{$user->id_user}">Admin</a></th>
+      <th scope="row"><a href="deleteUser/{$user->id_user}" class="btn btn-dark" value="{$user->id_user}">Eliminar</a></th>
     </tr>
+  {/foreach}
   </tbody>
 </table>
 
