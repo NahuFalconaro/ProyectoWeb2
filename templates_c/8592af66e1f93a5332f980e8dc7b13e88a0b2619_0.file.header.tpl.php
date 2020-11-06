@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-11-06 17:15:27
+  from 'C:\xampp\htdocs\Web2FinalProject\ProyectoWeb2\Template\header.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5fa5769f47ef68_09862471',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '8592af66e1f93a5332f980e8dc7b13e88a0b2619' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\Web2FinalProject\\ProyectoWeb2\\Template\\header.tpl',
+      1 => 1604679209,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5fa5769f47ef68_09862471 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,7 +29,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
-    <base href="{BASE_URL}">
+    <base href="<?php echo BASE_URL;?>
+">
     <title></title>
 </head>
 
@@ -22,18 +46,18 @@
                     <li class="nav-item active">
                         <a class="navbar-brand" href="productos">Productos <span class="sr-only">(current)</span></a>
                     </li>
-                    {if $logged==0}
+                    <?php if ($_smarty_tpl->tpl_vars['logged']->value == 0) {?>
                         <li class="nav-item active">
                             <a class="navbar-brand" href="registro">Registrarse <span class="sr-only">(current)</span></a>
                         </li>
-                    {/if}
-                    {if $logged==2}
+                    <?php }?>
+                    <?php if ($_smarty_tpl->tpl_vars['logged']->value == 2) {?>
                         <li class="nav-item active">
                             <a class="navbar-brand" href="users">Usuarios <span class="sr-only">(current)</span></a>
                         </li>
-                    {/if}
+                    <?php }?>
                 </ul>
-                {if $logged==0}
+                <?php if ($_smarty_tpl->tpl_vars['logged']->value == 0) {?>
                     <form action="verifyUser" method="POST" class="form-inline">
                         <div class="form-group mb-2">
                             <input type="text" class="form-control" name="user" placeholder="user">
@@ -43,10 +67,11 @@
                         </div>
                         <button type="submit" class="btn btn-primary mb-2">Login</button>
                     </form>
-                {/if}
-                {if $logged==1 || $logged==2}
+                <?php }?>
+                <?php if ($_smarty_tpl->tpl_vars['logged']->value == 1 || $_smarty_tpl->tpl_vars['logged']->value == 2) {?>
                     <a href="logout" class="btn btn-danger">logout</a>
-                {/if}
+                <?php }?>
             </div>
         </nav>
-    </header>
+    </header><?php }
+}

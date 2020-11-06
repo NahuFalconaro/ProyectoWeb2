@@ -22,8 +22,13 @@
     $r->addRoute("category/:ID", "GET", "ProductController", "showProductCategory");
     $r->addRoute("login", "GET", "UserController", "Login");
     $r->addRoute("logout", "GET", "UserController", "Logout");
+    $r->addRoute("users", "GET", "UserController", "showUsers");
 
     $r->addRoute("verifyUser", "POST", "UserController", "verifyUser");
+    $r->addRoute("registro", "GET", "UserController", "showRegistro");
+    $r->addRoute("insertUser", "POST", "UserController", "insertUser");
+    $r->addRoute("updateUser/:ID", "POST", "UserController", "updateUser");
+    
 
 
     //Esto lo veo en View
@@ -32,7 +37,7 @@
     $r->addRoute("insertuser", "POST", "UserController", "InsertUser");
     
    
-    $r->addRoute("deleteuser/:ID", "GET", "ProductController", "BorrarElProdcutoQueVienePorParametro");
+    $r->addRoute("deleteUser/:ID", "GET", "UserController", "deleteUser");
     $r->addRoute("delete/:ID", "GET", "ProductController", "deleteProduct");
     $r->addRoute("deleteCategory/:ID", "GET", "CategoryController", "deleteCategory");
 
