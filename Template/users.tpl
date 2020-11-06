@@ -1,28 +1,19 @@
 {include file='./header.tpl'}
-{if $logged == 1}
-    <section>
-        <div class="container">
-            <h2 class="marginSection">Lista de usuarios</h2>
-                <form action="insert" method="POST" >
-                    <div class="form-row  marginSection"  >
-                        <div class="col">
-                            <input type="text" class="form-control" name="nombreUsuario" placeholder="Nombre de Usuario">
-                        </div>
-                        {*if $user->admin ==1 show esto*}
-                        <div class="col">
-                            <button type="submit" class="btn btn-outline-dark">Quitar permisos admin</button>
-                        </div>
-                        {*else show esto*}
-                        <div class="col">
-                            <button type="submit" class="btn btn-outline-dark">Agregar permisos admin</button>
-                        </div>  
-                        <div class="col">
-                            <button type="submit" class="btn btn-outline-dark">Borrar</button>
-                        </div>
-                    </div>
-                </form>
-        </div>
-    </section>
-    {/if}
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Nombre Usuario</th>
+      <th scope="col">Admin</th>
+      <th scope="col">Delete User</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><button> Admin Permisos Add/Delete <button></td>
+      <td><button> Delete User <button></td>
+    </tr>
+  </tbody>
+</table>
 
 {include file='./footer.tpl'}
