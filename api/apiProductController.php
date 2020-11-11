@@ -26,16 +26,6 @@ class ApiTasksController extends ApiController {
             $this->view->response("La tarea con el id=$id no existe", 404);
     }
     
-    public function DeleteTask($params = null) {
-        $id = $params[':ID'];
-        $result =  $task = $this->model->DeleteTaskDelModelo($id);
-
-        if($result > 0)
-            $this->view->response("La tarea con el id=$id fue eliminada", 200);
-        else
-            $this->view->response("La tarea con el id=$id no existe", 404);
-    }
-
     public function InsertTask($params = null){
         $body = $this->getData();
 
@@ -46,6 +36,18 @@ class ApiTasksController extends ApiController {
         else
             $this->view->response("La tarea no se pudo insertar", 404);
     }
+
+    public function DeleteTask($params = null) {
+        $id = $params[':ID'];
+        $result =  $task = $this->model->DeleteTaskDelModelo($id);
+
+        if($result > 0)
+            $this->view->response("La tarea con el id=$id fue eliminada", 200);
+        else
+            $this->view->response("La tarea con el id=$id no existe", 404);
+    }
+
+  
 
     public function UpdateTask($params = null){
         $id = $params[':ID'];
