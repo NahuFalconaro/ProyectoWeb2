@@ -1,20 +1,17 @@
 <?php
 require_once 'route.php';
-require_once 'api/apiController.php';
+require_once 'api/apiProductController.php';
 
 // instacio el router
 $router = new Router();
 
 // armo la tabla de ruteo de la API REST
-$router->addRoute('tareas', 'GET', 'ApiTasksController', 'GetTasks');
-$router->addRoute('tareas/:ID', 'GET', 'ApiTasksController', 'GetTask');
-$router->addRoute('tareas/:ID', 'DELETE', 'ApiTasksController', 'DeleteTask');
+//$router->addRoute('/producto', 'GET', 'ApiTasksController', 'GetTasks');
 
-$router->addRoute('tareas', 'POST', 'ApiTasksController', 'InsertTask');
-
-
-$router->addRoute('tareas/:ID', 'PUT', 'ApiTasksController', 'UpdateTask');
-
+//comentario/:ID pertenece al id producto?
+$router->addRoute('comentario/:ID', 'GET', 'apiProductController', 'getCommentID');
+$router->addRoute('/comentario/:ID', 'POST', 'apiProductController', 'insertComment');
+$router->addRoute('/comentario/:ID', 'DELETE', 'apiProductController', 'deleteComment');
 
  //run
  $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']); 

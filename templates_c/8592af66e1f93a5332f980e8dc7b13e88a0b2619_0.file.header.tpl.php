@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-06 17:15:27
+/* Smarty version 3.1.34-dev-7, created on 2020-11-12 00:24:34
   from 'C:\xampp\htdocs\Web2FinalProject\ProyectoWeb2\Template\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fa5769f47ef68_09862471',
+  'unifunc' => 'content_5fac72b217d756_22148321',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8592af66e1f93a5332f980e8dc7b13e88a0b2619' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Web2FinalProject\\ProyectoWeb2\\Template\\header.tpl',
-      1 => 1604679209,
+      1 => 1605137070,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5fa5769f47ef68_09862471 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fac72b217d756_22148321 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +31,10 @@ function content_5fa5769f47ef68_09862471 (Smarty_Internal_Template $_smarty_tpl)
     <link rel="stylesheet" href="css/styles.css">
     <base href="<?php echo BASE_URL;?>
 ">
-    <title></title>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"><?php echo '</script'; ?>
+>
+    <title>documento</title>
 </head>
 
 <body>
