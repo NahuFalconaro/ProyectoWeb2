@@ -1,28 +1,28 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-12 00:41:27
+/* Smarty version 3.1.34-dev-7, created on 2020-11-18 15:53:19
   from 'C:\xampp\htdocs\Web2FinalProject\ProyectoWeb2\Template\product.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fac76a7707210_37664014',
+  'unifunc' => 'content_5fb5355fd64989_56020455',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '25980d71987c987e6e75aad5b87e1b64d3fe9184' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Web2FinalProject\\ProyectoWeb2\\Template\\product.tpl',
-      1 => 1605138045,
+      1 => 1605711180,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:./header.tpl' => 1,
-    'file:./vue/vueComment.tpl' => 1,
+    'file:./vue/vueComment.vue' => 1,
   ),
 ),false)) {
-function content_5fac76a7707210_37664014 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fb5355fd64989_56020455 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:./header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="container-fluid">
@@ -48,26 +48,29 @@ $_smarty_tpl->_subTemplateRender('file:./header.tpl', $_smarty_tpl->cache_id, $_
             </div>
         </div>
         <div class="col-8">
-            <input type="hidden" name="idproducto" value="<?php echo $_smarty_tpl->tpl_vars['Product']->value->id_product;?>
-">
+           
             <label class="loged" id="<?php echo $_smarty_tpl->tpl_vars['logged']->value;?>
 "></label>
             <label class="ids" id="<?php echo $_smarty_tpl->tpl_vars['Product']->value->id_product;?>
 "></label>
             <div>
                 <?php if ($_smarty_tpl->tpl_vars['logged']->value == 0) {?>
-                    <form action="addComment" id="addComment"method="POST" class="form-inline" style="margin-top: 100px;">
-                        <div class="form-group mb-2">
-                            <input type="text" class="form-control" name="comment" placeholder="comment">
-                        </div>
-                        <div class="form-group mx-sm-2 mb-2">
-                            <input type="number" name="score" class="form-control"  placeholder="score">
-                        </div>
-                        <button type="submit" class="btn btn-primary mb-2">insertar</button>
+                    <form id="form-comment" action="insert" method="post">
+                    <div class="form-group">
+                        <label for="title">Comment</label>
+                        <input class="form-control" id="comment" name="input_comment" aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">Titulo de la Tarea</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="score">score</label>
+                        <input class="form-control" id="score" name="input_score">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
                     </form>
+
                 <?php }?>
                 <section id="vue-comentarios">
-                    <?php $_smarty_tpl->_subTemplateRender("file:./vue/vueComment.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+                    <?php $_smarty_tpl->_subTemplateRender("file:./vue/vueComment.vue", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
                 </section>
             </div>

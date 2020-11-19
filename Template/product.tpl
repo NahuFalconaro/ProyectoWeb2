@@ -17,23 +17,27 @@
             </div>
         </div>
         <div class="col-8">
-            <input type="hidden" name="idproducto" value="{$Product->id_product}">
+           
             <label class="loged" id="{$logged}"></label>
             <label class="ids" id="{$Product->id_product}"></label>
             <div>
                 {if $logged==0}
-                    <form action="addComment" id="addComment"method="POST" class="form-inline" style="margin-top: 100px;">
-                        <div class="form-group mb-2">
-                            <input type="text" class="form-control" name="comment" placeholder="comment">
-                        </div>
-                        <div class="form-group mx-sm-2 mb-2">
-                            <input type="number" name="score" class="form-control"  placeholder="score">
-                        </div>
-                        <button type="submit" class="btn btn-primary mb-2">insertar</button>
+                    <form id="form-comment" action="insert" method="post">
+                    <div class="form-group">
+                        <label for="title">Comment</label>
+                        <input class="form-control" id="comment" name="input_comment" aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">Titulo de la Tarea</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="score">score</label>
+                        <input class="form-control" id="score" name="input_score">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
                     </form>
+
                 {/if}
                 <section id="vue-comentarios">
-                    {include file="./vue/vueComment.tpl"}
+                    {include file="./vue/vueComment.vue"}
                 </section>
             </div>
         </div>
