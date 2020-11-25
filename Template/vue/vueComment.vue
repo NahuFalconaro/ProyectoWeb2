@@ -5,7 +5,7 @@
     <tr>
       <th scope="col-lg-4">Comentario</th>
       <th scope="col-lg-4">Puntaje</th>
-      <th scope="col-lg-4">delete</th>
+
     </tr>
   </thead>
   <tbody id="vue-task" >
@@ -13,7 +13,7 @@
       <td class="td d-none elComentario" name="elComentario"  scope="col-lg-4"></td>
       <td class="td" scope="col-lg-4">{{ task.comment }}</td>
       <td class="td" scope="col-lg-4">{{ task.score}}</td>
-      <td><input type="submit" v-on:click="deleteComment(task.id_comment)" v-bind:id="task.id_comment" class="btn btn-danger" value="eliminar"></td>
+      <td><input v-if="loged === '2'" type="submit" v-on:click="deleteComment(task.id_comment)" v-bind:id="task.id_comment" class="btn btn-danger" value="eliminar"></td>
     </tr>
   </tbody>
 </table>

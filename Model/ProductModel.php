@@ -28,11 +28,19 @@ class ProductModel{
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
 
     }
-
-    //ADMIN
-    function insertProduct($name, $price, $stock, $description, $id_category){
-        $sentencia = $this->db->prepare("INSERT INTO product(nombre, price, stock, descripcion, id_category) VALUES (?,?,?,?,?)");
-        $sentencia->execute(array($name, $price, $stock, $description, $id_category));
+    
+    function insertProduct($name, $price, $stock, $description,$imagen = null, $id_category){
+        $pathImg = null;
+            if ($imagen){
+                $pathImg = $this->uploadImage($imagen);
+            }
+        $sentencia = $this->db->prepare("INSERT INTO product(nombre, price, stock, descripcion ,imagen, id_category) VALUES (?,?,?,?,?,?)");
+        $sentencia->execute(array($name, $price, $stock, $description,$pathImg, $id_category));
+    }
+    private function uploadImage($image){
+        $target = 'img/' . uniqid() . '.jpg';
+        move_uploaded_file($image, $target);
+        return $target;
     }
     function deleteProduct($id_product){
         $sentencia = $this->db->prepare("DELETE FROM product WHERE id_product = ?");
@@ -42,9 +50,13 @@ class ProductModel{
         $sentencia = $this->db->prepare("DELETE FROM product WHERE id_category = ?");
         $sentencia-> execute(array($id_category));
     }
-    function updateProduct($id_product, $nombre, $price, $stock, $descripcion, $id_category){
-        $sentencia = $this->db->prepare("UPDATE product SET nombre=?, price=?, stock=?, descripcion=?, id_category=? WHERE id_product = ?");
-        $sentencia->execute(array($nombre, $price, $stock, $descripcion, $id_category,$id_product));
+    function updateProduct($id_product, $nombre, $price, $stock, $descripcion, $imagen = null, $id_category){
+        $pathImg = null;
+            if ($imagen){
+                $pathImg = $this->uploadImage($imagen);
+            }
+        $sentencia = $this->db->prepare("UPDATE product SET nombre=?, price=?, stock=?, descripcion=?, imagen=?, id_category=? WHERE id_product = ?");
+        $sentencia->execute(array($nombre, $price, $stock, $descripcion, $pathImg, $id_category,$id_product));
     }
 }
 

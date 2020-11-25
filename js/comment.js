@@ -2,7 +2,8 @@
 let app = new Vue({
     el: '#vue-task',
     data: {
-        tasks: []
+        tasks: [],
+        loged: "loged"
     },
     methods: {
         deleteComment: function (id){
@@ -23,7 +24,6 @@ let app = new Vue({
 });
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
     getTasks();
     document.querySelector('#form-comment').addEventListener('submit', e => {
@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function getTasks() {
     let id = document.querySelector(".ids").id;
+    let log = document.querySelector(".loged").id;
     let url = "api/comentario/" + id;
     fetch(url)
     .then(response => response.json())
@@ -48,6 +49,8 @@ function getTasks() {
       //  console.log(json);//este devuelve el contenido en forma de arreglo de json
     //})
     .catch(error => console.log(error));
+
+    app.loged = log;
 }
 
 function addTask(){

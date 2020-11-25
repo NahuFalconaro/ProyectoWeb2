@@ -5,6 +5,7 @@ require_once "./View/CategoryView.php";
 require_once  "./Model/ProductModel.php";
 require_once  "./Model/CategoryModel.php";
 require_once  "./Model/UserModel.php";
+require_once  "./Model/commentModel.php";
 
 class ProductController{
 
@@ -20,6 +21,7 @@ class ProductController{
         $this->model = new ProductModel();
         $this->modelCategory = new CategoryModel();
         $this->modelUser = new UserModel();
+        $this->modelComment = new commentModel();
 
     }
     private function checkLoggedIn(){
@@ -57,6 +59,14 @@ class ProductController{
         $logged = $this->getAccess();
         $this->view->showProducts($Products, $Category, $logged);
     }
+    function get(){
+        $limite = $_POST['limite'];
+        $Products = $this->model->getProducts($limite);
+        $Category = $this->modelCategory->getCategories();
+        $logged = $this->getAccess();
+        $this->view->showProducts($Products, $Category, $logged);
+    }
+    
     function showProduct($params = null){
         $id = $params[':ID'];
         $Product = $this->model->getProduct($id); 
@@ -77,13 +87,18 @@ class ProductController{
             $stock = $_POST['stock'];
             $descripcion = $_POST['descripcion'];
             $id_category = $_POST['category'];
-            $this->model->insertProduct($nombre, $price, $stock, $descripcion, $id_category);   
-            $this->view->ShowHomeLocation();
+            if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" 
+                    || $_FILES['input_name']['type'] == "image/png" ) {
+                $this->model->insertProduct($nombre, $price, $stock, $descripcion, $_FILES['input_name']['tmp_name'], $id_category);   
+                $this->view->ShowHomeLocation();
+                }
+
     }
 
     function deleteProduct($params = null){
         $this->checkLoggedIn();
         $id = $params[':ID'];
+        $this->modelComment->deleteCommentForProduct($id);
         $this->model->deleteProduct($id);
         $this->view->ShowHomeLocation();
     }
@@ -96,10 +111,11 @@ class ProductController{
         $stock = $_POST['stockUpdate'];
         $descripcion = $_POST['descripcionUpdate'];
         $id_category = $_POST['categoryUpdate'];
-        $this->model->updateProduct($id, $nombre, $price, $stock, $descripcion, $id_category);
-        $this->view->ShowHomeLocation();
+        if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" 
+                    || $_FILES['imagen']['type'] == "image/png" ) {
+                        $this->model->updateProduct($id, $nombre, $price, $stock, $descripcion, $_FILES['imagen']['tmp_name'], $id_category);
+                        $this->view->ShowHomeLocation();
     }
 }
-
-
+}
 ?>

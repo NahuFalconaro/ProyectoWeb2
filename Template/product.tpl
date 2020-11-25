@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-4">
             <div class="card" style="width: 18rem; margin-top: 150px;">
-                <img src="images/58f800703a91328fe6b19291714fb0bf.jpg" class="card-img-top" alt="...">
+                <img src="{$Product->imagen}" class="card-img-top" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{$Product->nombre}</h5>
                 </div>
@@ -12,16 +12,18 @@
                     <li class="list-group-item">{$Product->stock}</li>
                     <li class="list-group-item">{$Product->descripcion}</li>
                     <li class="list-group-item">{$Product->category}</li>
+                    <li class="list-group-item">{$Product->imagen}</li>
 
                 </ul>
             </div>
         </div>
         <div class="col-8">
-           
+        
+        <h1 style="margin-top: 100px ;">Tabla de comentarios</h1>
+        {if $logged==1}
             <label class="loged" id="{$logged}"></label>
             <label class="ids" id="{$Product->id_product}"></label>
             <div>
-                {if $logged==0}
                     <form id="form-comment" action="insert" method="post">
                     <div class="form-group">
                         <label for="title">Comment</label>

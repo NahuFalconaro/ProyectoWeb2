@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-06 17:11:24
+/* Smarty version 3.1.34-dev-7, created on 2020-11-25 15:24:30
   from 'C:\xampp\htdocs\Web2FinalProject\ProyectoWeb2\Template\products.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fa575ac7271a2_25906246',
+  'unifunc' => 'content_5fbe691e560b17_36629683',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b23b41b92d5c8b74977beb9a12d7e8ba222669bb' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Web2FinalProject\\ProyectoWeb2\\Template\\products.tpl',
-      1 => 1604679074,
+      1 => 1606314266,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:./footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fa575ac7271a2_25906246 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fbe691e560b17_36629683 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:./header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <section>
@@ -33,7 +33,7 @@ $_smarty_tpl->_subTemplateRender('file:./header.tpl', $_smarty_tpl->cache_id, $_
         <h2 class="form">Lista de productos</h2>
     <?php }?>
         <?php if ($_smarty_tpl->tpl_vars['logged']->value == 2) {?>
-            <form action="insert" method="POST" >
+            <form action="insert" method="POST" enctype="multipart/form-data" >
                 <div class="form-row  marginSection"  >
                     <div class="col">
                         <input type="text" class="form-control" name="nombre" placeholder="Nombre Producto">
@@ -48,25 +48,28 @@ $_smarty_tpl->_subTemplateRender('file:./header.tpl', $_smarty_tpl->cache_id, $_
                         <input type="text" class="form-control" name="descripcion" placeholder="Descripcion">
                     </div>
                     <div>
-                        <select name="category" class="form-control">
-                            <?php
+                    <select name="category" class="form-control">
+                    <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['Category']->value, 'category');
 $_smarty_tpl->tpl_vars['category']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['category']->value) {
 $_smarty_tpl->tpl_vars['category']->do_else = false;
 ?>
-                                <option value="<?php echo $_smarty_tpl->tpl_vars['category']->value->id_category;?>
+                        <option value="<?php echo $_smarty_tpl->tpl_vars['category']->value->id_category;?>
 "><?php echo $_smarty_tpl->tpl_vars['category']->value->category;?>
 </option>
-                            <?php
+                    <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                        </select>
+                    </select>
                     </div>
+                    <div class="col">
+                        <input type="file" class="form-control" name="input_name" id="imagenUpload" >
+                    </div>
+                </div>
                     <div class="col">
                         <button type="submit" class="btn btn-outline-dark">Insertar</button>
                     </div>
-                </div>
             </form>
         <?php }?>
     </div>
@@ -83,7 +86,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             <thead class="thead-dark">
         
                 <tr>
-
+                    <th scope="col">imagen</th>
                     <th scope="col">nombre</th>
                     <th scope="col">precio</th>
                     <th scope="col">stock</th>
@@ -103,6 +106,8 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['product']->value
 $_smarty_tpl->tpl_vars['product']->do_else = false;
 ?>
                     <tr>
+                        <th scope="col"><img src="<?php echo $_smarty_tpl->tpl_vars['product']->value->imagen;?>
+" class="card-img-top" alt="Card image cap"></th>
                         <th scope="col"><?php echo $_smarty_tpl->tpl_vars['product']->value->nombre;?>
 </th>
                         <th scope="col"><?php echo $_smarty_tpl->tpl_vars['product']->value->price;?>
@@ -152,6 +157,12 @@ $_smarty_tpl->tpl_vars['product']->do_else = false;
                                                 <div class="form-group">
                                                     <input type="text" class="form-control" name="descripcionUpdate" value="<?php echo $_smarty_tpl->tpl_vars['product']->value->descripcion;?>
 ">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="iamge" id="iamge" value="<?php echo $_smarty_tpl->tpl_vars['product']->value->imagen;?>
+" placeholder="<?php echo $_smarty_tpl->tpl_vars['product']->value->imagen;?>
+">
+                                                    <input type="file" class="form-control" name="imagen" id="imagenUpload" >
                                                 </div>
                                                 <div>
                                                     <select name="categoryUpdate" class="form-control">

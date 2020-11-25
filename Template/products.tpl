@@ -7,7 +7,7 @@
         <h2 class="form">Lista de productos</h2>
     {/if}
         {if $logged == 2}
-            <form action="insert" method="POST" >
+            <form action="insert" method="POST" enctype="multipart/form-data" >
                 <div class="form-row  marginSection"  >
                     <div class="col">
                         <input type="text" class="form-control" name="nombre" placeholder="Nombre Producto">
@@ -22,16 +22,19 @@
                         <input type="text" class="form-control" name="descripcion" placeholder="Descripcion">
                     </div>
                     <div>
-                        <select name="category" class="form-control">
-                            {foreach from=$Category item=category}
-                                <option value="{$category->id_category}">{$category->category}</option>
-                            {/foreach}
-                        </select>
+                    <select name="category" class="form-control">
+                    {foreach from=$Category item=category}
+                        <option value="{$category->id_category}">{$category->category}</option>
+                    {/foreach}
+                    </select>
                     </div>
+                    <div class="col">
+                        <input type="file" class="form-control" name="input_name" id="imagenUpload" >
+                    </div>
+                </div>
                     <div class="col">
                         <button type="submit" class="btn btn-outline-dark">Insertar</button>
                     </div>
-                </div>
             </form>
         {/if}
     </div>
@@ -48,7 +51,7 @@
             <thead class="thead-dark">
         
                 <tr>
-
+                    <th scope="col">imagen</th>
                     <th scope="col">nombre</th>
                     <th scope="col">precio</th>
                     <th scope="col">stock</th>
@@ -63,6 +66,7 @@
             <tbody>
                 {foreach from=$Products item=product}
                     <tr>
+                        <th scope="col"><img src="{$product->imagen}" class="card-img-top" alt="Card image cap"></th>
                         <th scope="col">{$product->nombre}</th>
                         <th scope="col">{$product->price}</th>
                         <th scope="col">{$product->stock}</th>
@@ -97,6 +101,10 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="text" class="form-control" name="descripcionUpdate" value="{$product->descripcion}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="iamge" id="iamge" value="{$product->imagen}" placeholder="{$product->imagen}">
+                                                    <input type="file" class="form-control" name="imagen" id="imagenUpload" >
                                                 </div>
                                                 <div>
                                                     <select name="categoryUpdate" class="form-control">
