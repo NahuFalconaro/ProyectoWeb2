@@ -92,9 +92,8 @@ class ProductController{
                 $this->model->insertProduct($nombre, $price, $stock, $descripcion, $_FILES['input_name']['tmp_name'], $id_category);   
                 $this->view->ShowHomeLocation();
                 }
-
     }
-
+//ANOTACIONES: busqueda por precio, busqueda por atributos. ordenar por precio y nombre, y busqueda por algo.
     function deleteProduct($params = null){
         $this->checkLoggedIn();
         $id = $params[':ID'];
