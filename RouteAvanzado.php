@@ -23,13 +23,13 @@
     $r->addRoute("login", "GET", "UserController", "Login");
     $r->addRoute("logout", "GET", "UserController", "Logout");
     $r->addRoute("users", "GET", "UserController", "showUsers");
-
     $r->addRoute("verifyUser", "POST", "UserController", "verifyUser");
     $r->addRoute("registro", "GET", "UserController", "showRegistro");
     $r->addRoute("insertUser", "POST", "UserController", "insertUser");
     $r->addRoute("updateUser/:ID", "POST", "UserController", "updateUser");
     
-
+    $r->addRoute("searchProducts", "POST", "ProductController", "searchProducts");
+    $r->addRoute("pagina/:ID", "GET", "ProductController", "showProducts");
 
     //Esto lo veo en View
     $r->addRoute("insert", "POST", "ProductController", "insertProduct");

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-12 00:24:34
+/* Smarty version 3.1.34-dev-7, created on 2020-11-26 16:08:57
   from 'C:\xampp\htdocs\Web2FinalProject\ProyectoWeb2\Template\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fac72b217d756_22148321',
+  'unifunc' => 'content_5fbfc50946fbe3_57086673',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8592af66e1f93a5332f980e8dc7b13e88a0b2619' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Web2FinalProject\\ProyectoWeb2\\Template\\header.tpl',
-      1 => 1605137070,
+      1 => 1606402928,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5fac72b217d756_22148321 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fbfc50946fbe3_57086673 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -59,6 +59,14 @@ function content_5fac72b217d756_22148321 (Smarty_Internal_Template $_smarty_tpl)
                             <a class="navbar-brand" href="users">Usuarios <span class="sr-only">(current)</span></a>
                         </li>
                     <?php }?>
+                    <li class="nav-item active">
+                        <div class="container ">
+                            <form action="searchProducts" method="POST" class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" name="inputBuscar" placeholder="Buscar Producto" aria-label="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                            </form>
+                        </div>
+                    </li>
                 </ul>
                 <?php if ($_smarty_tpl->tpl_vars['logged']->value == 0) {?>
                     <form action="verifyUser" method="POST" class="form-inline">

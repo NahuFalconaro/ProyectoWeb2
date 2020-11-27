@@ -35,7 +35,28 @@
     }
 }
 
+.paginador ul{
+    padding: 15px;
+    list-style: none;
+    background: #fff;
+    margin-top: 15px;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; 
+}
+.paginador a{
+    color: #428bca;
+    border: 1px solid #ddd;
+    padding: 5px;
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+    width: 35px;
+}
 
+.paginador a:hover{
+    background: #ddd;
+}
 .home{
     font-size: 25px;
     margin-left: 250px;

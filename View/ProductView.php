@@ -14,9 +14,10 @@ class ProductView{
         $smarty->assign('logged', $logged);
         $smarty->display('./Template/home.tpl');
     }
-    function showProducts($Products, $Category, $logged){
+    function showProducts($Products, $CantidadProductos, $Category, $logged){
         $smarty = new Smarty();
         $smarty->assign('Products', $Products);
+        $smarty->assign('CantidadProductos', $CantidadProductos);
         $smarty->assign('Category', $Category);
         $smarty->assign('logged', $logged);
         $smarty->display('./Template/products.tpl');
@@ -27,11 +28,16 @@ class ProductView{
         $smarty->assign('logged', $logged);
         $smarty->display('Template/productsCategory.tpl');
     }
+    function showProductsSearched($Searching, $logged){
+        $smarty = new Smarty();
+        $smarty->assign('Searching', $Searching);
+        $smarty->assign('logged', $logged);
+        $smarty->display('Template/productSearch.tpl');
+    }
     function showProduct($Product, $logged){
         $smarty = new Smarty();
         $smarty->assign('Product', $Product);
         $smarty->assign('logged', $logged);
-       
         $smarty->display('./Template/product.tpl');
     }
 

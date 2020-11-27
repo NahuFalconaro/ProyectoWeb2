@@ -56,9 +56,22 @@ class ProductController{
     function showProducts(){
         $Products = $this->model->getProducts();
         $Category = $this->modelCategory->getCategories();
+        $CantidadProductos = count($Products);
         $logged = $this->getAccess();
-        $this->view->showProducts($Products, $Category, $logged);
+        $por_pagina = 2;
+        if(empty($_GET['pagina'])){
+            $pagina = 1;
+        }else{
+            $pagina = $_GET['pagina'];
+        }
+
+        $desde = (($pagina-1) * $por_pagina);
+        $total_paginas = ceil($CantidadProductos / $por_pagina);//ceil() redondea un número HACIA ARRIBA al entero más cercano.
+        $showProduct = $this->model->getProductsLimit($desde, $por_pagina);
+        $this->view->showProducts($showProduct,$total_paginas, $Category, $logged);
     }
+
+
     function get(){
         $limite = $_POST['limite'];
         $Products = $this->model->getProducts($limite);
@@ -92,8 +105,14 @@ class ProductController{
                 $this->model->insertProduct($nombre, $price, $stock, $descripcion, $_FILES['input_name']['tmp_name'], $id_category);   
                 $this->view->ShowHomeLocation();
                 }
+
     }
-//ANOTACIONES: busqueda por precio, busqueda por atributos. ordenar por precio y nombre, y busqueda por algo.
+    function searchProducts($params = null){
+        $logged = $this->getAccess();
+        $namefield = $_POST['inputBuscar'];
+        $Searching = $this->model->getSearchedProducts($namefield);
+        $this->view->showProductsSearched($Searching, $logged);
+    }
     function deleteProduct($params = null){
         $this->checkLoggedIn();
         $id = $params[':ID'];
@@ -114,7 +133,7 @@ class ProductController{
                     || $_FILES['imagen']['type'] == "image/png" ) {
                         $this->model->updateProduct($id, $nombre, $price, $stock, $descripcion, $_FILES['imagen']['tmp_name'], $id_category);
                         $this->view->ShowHomeLocation();
+        }
     }
-}
 }
 ?>

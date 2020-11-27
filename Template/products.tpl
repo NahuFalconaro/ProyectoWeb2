@@ -39,17 +39,15 @@
         {/if}
     </div>
     
+
     <div class="container ">
-    
-    
+    <div class="container "> 
     {if $logged == 2}
         <table class="table table-striped table-dark tabla table-responsive-md marginSection" >
     {else}
         <table class="table table-striped table-dark tabla table-responsive-md marginSection">
     {/if} 
-
             <thead class="thead-dark">
-        
                 <tr>
                     <th scope="col">imagen</th>
                     <th scope="col">nombre</th>
@@ -85,7 +83,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="update/{$product->id_product}" method="POST" class="container">
+                                            <form action="update/{$product->id_product}" method="POST" class="container" enctype="multipart/form-data">
         
                                                 <div class="form-group">
         
@@ -104,7 +102,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="text" class="form-control" name="iamge" id="iamge" value="{$product->imagen}" placeholder="{$product->imagen}">
-                                                    <input type="file" class="form-control" name="imagen" id="imagenUpload" >
+                                                    <input type="file" class="form-control" name="imagen" id="imagenUpload" value="{$product->imagen}" >
                                                 </div>
                                                 <div>
                                                     <select name="categoryUpdate" class="form-control">
@@ -126,7 +124,7 @@
         </tr>
     {/foreach}
     </tbody>
-
+ 
     <table class="table table-striped table-dark tabla table-responsive-md margentabla">
         {if $logged == 2}
             <form action="insertCategory" method="POST">
@@ -140,7 +138,13 @@
                 </div>
             </form>
         {/if}
-        <h2>Lista de categorias</h2>
+        <div class="paginador">
+            <ul>{*FALTA QUE REDIRECCIONE Y CONSULTE POR EL NUEVO ELEMENTO*}
+            {for $foo=1 to $CantidadProductos}
+                <li><a href="pagina/{$foo}">{$foo}</a></li>
+            {/for}
+            </ul>
+        </div>
         <p>Haz click en el nombre de las categorias para ver que productos contiene cada una!</p>
         <thead class="thead-dark">
             <tr>

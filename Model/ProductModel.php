@@ -7,11 +7,21 @@ class ProductModel{
     function __construct(){
         $this->db = new PDO('mysql:host=localhost;'.'dbname=store;charset=utf8', 'root', '');
     }
-       
+    
     function getProducts(){
-          $sentencia = $this->db->prepare("SELECT product.*, category.* FROM product INNER JOIN category ON product.id_category = category.id_category");
-          $sentencia->execute();
-          return $sentencia->fetchAll(PDO::FETCH_OBJ);
+        $sentencia = $this->db->prepare("SELECT product.*, category.* FROM product INNER JOIN category ON product.id_category = category.id_category");
+        $sentencia->execute();
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    }
+    function getProductsLimit($desde, $por_pagina){ 
+        $sentencia = $this->db->prepare("SELECT product.*, category.* FROM product INNER JOIN category ON product.id_category = category.id_category LIMIT $desde, $por_pagina"); 
+        $sentencia->execute(array($desde, $por_pagina)); 
+        return $sentencia->fetchAll(PDO::FETCH_OBJ); }
+    //terminar el like
+    function getSearchedProducts($namefield){
+        $sentencia = $this->db->prepare("SELECT product.*, category.* FROM product INNER JOIN category WHERE nombre LIKE '$namefield%'");
+        $sentencia->execute(array($namefield));
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
     
     function getProduct($id){
@@ -59,7 +69,6 @@ class ProductModel{
         $sentencia->execute(array($nombre, $price, $stock, $descripcion, $pathImg, $id_category,$id_product));
     }
 }
-
-
+//ANOTACIONES: busqueda por precio, y busqueda por nombre.
 
 ?>

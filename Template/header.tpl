@@ -33,6 +33,14 @@
                             <a class="navbar-brand" href="users">Usuarios <span class="sr-only">(current)</span></a>
                         </li>
                     {/if}
+                    <li class="nav-item active">
+                        <div class="container ">
+                            <form action="searchProducts" method="POST" class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" name="inputBuscar" placeholder="Buscar Producto" aria-label="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                            </form>
+                        </div>
+                    </li>
                 </ul>
                 {if $logged==0}
                     <form action="verifyUser" method="POST" class="form-inline">
