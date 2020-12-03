@@ -17,7 +17,7 @@ class UserModel{
     $sentencia->execute();
     return $sentencia->fetchAll(PDO::FETCH_OBJ);
 }
-  function getPassword($user){
+  function getUsername($user){
     $sentencia = $this->db->prepare("SELECT * FROM user WHERE user = ?");
     $sentencia->execute(array($user));
     return $sentencia->fetch(PDO::FETCH_OBJ);

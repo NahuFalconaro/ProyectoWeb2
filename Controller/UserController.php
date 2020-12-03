@@ -52,9 +52,9 @@ class UserController{
     public function verifyUser(){
        $user = $_POST['user'];
        $pass = $_POST['pass']; 
-       $username = $this->model->getPassword($user);
+       $username = $this->model->getUsername($user);
        
-       if(!empty($user) && !empty($pass)){    
+       if(!empty($user) && !empty($pass) && !empty($username)){    
         if(password_verify($pass, $username->pass)){
            session_start();
            $_SESSION['ID_USER'] = $username->id_user;
@@ -77,7 +77,7 @@ class UserController{
     function insertUser(){
         $user = $_POST['usuario'];
         $password = $_POST['contrasenia'];
-        if(isset($user) && isset($password)){
+        if(!empty($user) && !empty($password)){
                 $hash = password_hash($password, PASSWORD_DEFAULT);
                 $this->model->insertUser($user,$hash);
                 $this->loggin($user);
