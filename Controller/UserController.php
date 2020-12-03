@@ -52,10 +52,9 @@ class UserController{
     public function verifyUser(){
        $user = $_POST['user'];
        $pass = $_POST['pass']; 
-       
        $username = $this->model->getPassword($user);
-        
-       //if($pass == $username->password){
+       
+       if(!empty($user) && !empty($pass)){    
         if(password_verify($pass, $username->pass)){
            session_start();
            $_SESSION['ID_USER'] = $username->id_user;
@@ -65,6 +64,9 @@ class UserController{
        }else{
            $this->viewProducts->Home(0);
        }
+    }else{
+        $this->viewProducts->showError();
+    }
     }
     function loggin($user){
         $username = $this->model->getPassword($user);
@@ -76,32 +78,26 @@ class UserController{
         $user = $_POST['usuario'];
         $password = $_POST['contrasenia'];
         if(isset($user) && isset($password)){
-            //$verifyuser = $this->model->getPassword($user);
-            //if($verifyuser != null){
                 $hash = password_hash($password, PASSWORD_DEFAULT);
                 $this->model->insertUser($user,$hash);
                 $this->loggin($user);
                 $this->viewProducts->showHomeLocation();
-                //$this->viewProducts->showHome();
-            //}else{
-             //   echo "Usuario existente";
-           // }
         }else{
-            echo "Campos vacios, completelos para registrarse";
+            $this->viewProducts->showError();
         }
     }
 
     function deleteUser($params = null){
         $user = $params[':ID'];
         $this->model->deleteUser($user);
-        $this->viewProducts->ShowHomeLocation();
+        $this->view->ShowHomeLocation();
     }
     // Cambiar contraseña? 
    function updateUser($params = null){
         $user = $params[':ID'];
         $access = $_POST['permisos'];
         $this->model->updateUser($user, $access);
-        $this->viewProducts->ShowHomeLocation();
+        $this->view->ShowHomeLocation();
     }
 }
 

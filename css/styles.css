@@ -34,7 +34,15 @@
         padding-top: 40px !important;
     }
 }
+.btn-insert{
+    margin-top: 10px;
+    margin-left: 0 !important;
+}
 
+.uploadImagen{
+    color: white;
+    border: none;
+}
 .paginador ul{
     padding: 15px;
     list-style: none;

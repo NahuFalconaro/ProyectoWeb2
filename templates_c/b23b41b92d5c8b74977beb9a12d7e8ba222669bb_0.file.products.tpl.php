@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-27 03:40:06
+/* Smarty version 3.1.34-dev-7, created on 2020-12-03 01:01:16
   from 'C:\xampp\htdocs\Web2FinalProject\ProyectoWeb2\Template\products.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fc0670676d864_64670380',
+  'unifunc' => 'content_5fc82acc453f52_43030660',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b23b41b92d5c8b74977beb9a12d7e8ba222669bb' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Web2FinalProject\\ProyectoWeb2\\Template\\products.tpl',
-      1 => 1606444656,
+      1 => 1606953671,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:./footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fc0670676d864_64670380 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fc82acc453f52_43030660 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:./header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <section>
@@ -32,6 +32,13 @@ $_smarty_tpl->_subTemplateRender('file:./header.tpl', $_smarty_tpl->cache_id, $_
         <?php } else { ?>
         <h2 class="form">Lista de productos</h2>
     <?php }?>
+    <div class="container ">
+        <form action="searchPriceProducts" method="POST" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" name="minPrice" placeholder="Precio Minimo" aria-label="Search">
+            <input class="form-control mr-sm-2" name="maxPrice" placeholder="Precio Maximo" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+    </div>
         <?php if ($_smarty_tpl->tpl_vars['logged']->value == 2) {?>
             <form action="insert" method="POST" enctype="multipart/form-data" >
                 <div class="form-row  marginSection"  >
@@ -64,11 +71,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </select>
                     </div>
                     <div class="col">
-                        <input type="file" class="form-control" name="input_name" id="imagenUpload" >
+                        <input type="file" class="form-control uploadImagen" name="input_name" id="imagenUpload" >
                     </div>
                 </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-outline-dark">Insertar</button>
+                    <div class="col" style="padding: 0;">
+                        <button type="submit" class="btn btn-outline-dark btn-insert">Insertar</button>
                     </div>
             </form>
         <?php }?>
@@ -157,11 +164,11 @@ $_smarty_tpl->tpl_vars['product']->do_else = false;
 ">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="iamge" id="iamge" value="<?php echo $_smarty_tpl->tpl_vars['product']->value->imagen;?>
-" placeholder="<?php echo $_smarty_tpl->tpl_vars['product']->value->imagen;?>
+                                                    <input type="hidden" class="form-control" name="image" id="image" value="<?php echo $_smarty_tpl->tpl_vars['product']->value->imagen;?>
 ">
                                                     <input type="file" class="form-control" name="imagen" id="imagenUpload" value="<?php echo $_smarty_tpl->tpl_vars['product']->value->imagen;?>
-" >
+" placeholder="<?php echo $_smarty_tpl->tpl_vars['product']->value->imagen;?>
+">
                                                 </div>
                                                 <div>
                                                     <select name="categoryUpdate" class="form-control">
@@ -196,6 +203,20 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </tbody>
  
     <table class="table table-striped table-dark tabla table-responsive-md margentabla">
+    <div class="paginador">
+        <ul>        <?php
+$_smarty_tpl->tpl_vars['foo'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['foo']->step = 1;$_smarty_tpl->tpl_vars['foo']->total = (int) ceil(($_smarty_tpl->tpl_vars['foo']->step > 0 ? $_smarty_tpl->tpl_vars['CantidadProductos']->value+1 - (1) : 1-($_smarty_tpl->tpl_vars['CantidadProductos']->value)+1)/abs($_smarty_tpl->tpl_vars['foo']->step));
+if ($_smarty_tpl->tpl_vars['foo']->total > 0) {
+for ($_smarty_tpl->tpl_vars['foo']->value = 1, $_smarty_tpl->tpl_vars['foo']->iteration = 1;$_smarty_tpl->tpl_vars['foo']->iteration <= $_smarty_tpl->tpl_vars['foo']->total;$_smarty_tpl->tpl_vars['foo']->value += $_smarty_tpl->tpl_vars['foo']->step, $_smarty_tpl->tpl_vars['foo']->iteration++) {
+$_smarty_tpl->tpl_vars['foo']->first = $_smarty_tpl->tpl_vars['foo']->iteration === 1;$_smarty_tpl->tpl_vars['foo']->last = $_smarty_tpl->tpl_vars['foo']->iteration === $_smarty_tpl->tpl_vars['foo']->total;?>
+            <li><a href="pagina/<?php echo $_smarty_tpl->tpl_vars['foo']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['foo']->value;?>
+</a></li>
+        <?php }
+}
+?>
+        </ul>
+    </div>
         <?php if ($_smarty_tpl->tpl_vars['logged']->value == 2) {?>
             <form action="insertCategory" method="POST">
                 <div class="form-row ">
@@ -208,20 +229,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 </div>
             </form>
         <?php }?>
-        <div class="paginador">
-            <ul>            <?php
-$_smarty_tpl->tpl_vars['foo'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['foo']->step = 1;$_smarty_tpl->tpl_vars['foo']->total = (int) ceil(($_smarty_tpl->tpl_vars['foo']->step > 0 ? $_smarty_tpl->tpl_vars['CantidadProductos']->value+1 - (1) : 1-($_smarty_tpl->tpl_vars['CantidadProductos']->value)+1)/abs($_smarty_tpl->tpl_vars['foo']->step));
-if ($_smarty_tpl->tpl_vars['foo']->total > 0) {
-for ($_smarty_tpl->tpl_vars['foo']->value = 1, $_smarty_tpl->tpl_vars['foo']->iteration = 1;$_smarty_tpl->tpl_vars['foo']->iteration <= $_smarty_tpl->tpl_vars['foo']->total;$_smarty_tpl->tpl_vars['foo']->value += $_smarty_tpl->tpl_vars['foo']->step, $_smarty_tpl->tpl_vars['foo']->iteration++) {
-$_smarty_tpl->tpl_vars['foo']->first = $_smarty_tpl->tpl_vars['foo']->iteration === 1;$_smarty_tpl->tpl_vars['foo']->last = $_smarty_tpl->tpl_vars['foo']->iteration === $_smarty_tpl->tpl_vars['foo']->total;?>
-                <li><a href="pagina/<?php echo $_smarty_tpl->tpl_vars['foo']->value;?>
-"><?php echo $_smarty_tpl->tpl_vars['foo']->value;?>
-</a></li>
-            <?php }
-}
-?>
-            </ul>
-        </div>
         <p>Haz click en el nombre de las categorias para ver que productos contiene cada una!</p>
         <thead class="thead-dark">
             <tr>

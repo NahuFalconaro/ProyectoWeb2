@@ -20,7 +20,7 @@ class ProductView{
         $smarty->assign('CantidadProductos', $CantidadProductos);
         $smarty->assign('Category', $Category);
         $smarty->assign('logged', $logged);
-        $smarty->display('./Template/products.tpl');
+        $smarty->display('Template/products.tpl');
     }
     function showProductsCategory($Category, $logged){
         $smarty = new Smarty();
@@ -40,9 +40,12 @@ class ProductView{
         $smarty->assign('logged', $logged);
         $smarty->display('./Template/product.tpl');
     }
-
+    function showError(){
+        $smarty = new Smarty();
+        $smarty->display('./Template/error.tpl');
+    }
     function ShowHomeLocation(){
-       header("Location: ".BASE_URL."productos");
+       header("Location: ".BASE_URL."pagina/1");
     }
     
 }

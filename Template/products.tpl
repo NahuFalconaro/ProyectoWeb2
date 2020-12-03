@@ -6,6 +6,13 @@
         {else}
         <h2 class="form">Lista de productos</h2>
     {/if}
+    <div class="container ">
+        <form action="searchPriceProducts" method="POST" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" name="minPrice" placeholder="Precio Minimo" aria-label="Search">
+            <input class="form-control mr-sm-2" name="maxPrice" placeholder="Precio Maximo" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+    </div>
         {if $logged == 2}
             <form action="insert" method="POST" enctype="multipart/form-data" >
                 <div class="form-row  marginSection"  >
@@ -29,11 +36,11 @@
                     </select>
                     </div>
                     <div class="col">
-                        <input type="file" class="form-control" name="input_name" id="imagenUpload" >
+                        <input type="file" class="form-control uploadImagen" name="input_name" id="imagenUpload" >
                     </div>
                 </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-outline-dark">Insertar</button>
+                    <div class="col" style="padding: 0;">
+                        <button type="submit" class="btn btn-outline-dark btn-insert">Insertar</button>
                     </div>
             </form>
         {/if}
@@ -101,8 +108,8 @@
                                                     <input type="text" class="form-control" name="descripcionUpdate" value="{$product->descripcion}">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="iamge" id="iamge" value="{$product->imagen}" placeholder="{$product->imagen}">
-                                                    <input type="file" class="form-control" name="imagen" id="imagenUpload" value="{$product->imagen}" >
+                                                    <input type="hidden" class="form-control" name="image" id="image" value="{$product->imagen}">
+                                                    <input type="file" class="form-control" name="imagen" id="imagenUpload" value="{$product->imagen}" placeholder="{$product->imagen}">
                                                 </div>
                                                 <div>
                                                     <select name="categoryUpdate" class="form-control">
@@ -126,6 +133,13 @@
     </tbody>
  
     <table class="table table-striped table-dark tabla table-responsive-md margentabla">
+    <div class="paginador">
+        <ul>{*FALTA QUE REDIRECCIONE Y CONSULTE POR EL NUEVO ELEMENTO*}
+        {for $foo=1 to $CantidadProductos}
+            <li><a href="pagina/{$foo}">{$foo}</a></li>
+        {/for}
+        </ul>
+    </div>
         {if $logged == 2}
             <form action="insertCategory" method="POST">
                 <div class="form-row ">
@@ -138,13 +152,6 @@
                 </div>
             </form>
         {/if}
-        <div class="paginador">
-            <ul>{*FALTA QUE REDIRECCIONE Y CONSULTE POR EL NUEVO ELEMENTO*}
-            {for $foo=1 to $CantidadProductos}
-                <li><a href="pagina/{$foo}">{$foo}</a></li>
-            {/for}
-            </ul>
-        </div>
         <p>Haz click en el nombre de las categorias para ver que productos contiene cada una!</p>
         <thead class="thead-dark">
             <tr>

@@ -26,6 +26,9 @@ class UserView{
         $smarty->assign('logged', $logged);
         $smarty->display('./Template/users.tpl');
     }
+    function showhomeLocation(){
+        header("Location: ".BASE_URL."users");
+    }
 
 }
 

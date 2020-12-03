@@ -1,22 +1,20 @@
 "use strict";
 let app = new Vue({
-    el: '#vue-task',
+    el: '#vue-comment',
     data: {
-        tasks: [],
+        comment: [],
         loged: "loged"
     },
     methods: {
         deleteComment: function (id){
-            //let id = document.querySelector('.elComentario').id;//lo trae, hay que arreglar el tema del id, trae todos, por el hecho que tienen todos el msimo name
-           //obtuve el id pero con onclick, buscar forma de hacerlo sin eso
-           let url = "api/comen/" + id;
+           let url = "api/comentario/" + id;
            console.log(url);
            fetch(url, {
                     method:'DELETE'
             })
         
             .then(function(r){
-                getTasks();
+                getComment();
                 })
             .catch(error => console.log(error));
         }
@@ -25,25 +23,26 @@ let app = new Vue({
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    getTasks();
+    getComment();
     document.querySelector('#form-comment').addEventListener('submit', e => {
         // evita el envio del form default
         e.preventDefault();
         
-        addTask();
+        addComment();
     });
     
 
     
 });
 
-function getTasks() {
+function getComment() {
     let id = document.querySelector(".ids").id;
+    console.log(id);
     let log = document.querySelector(".loged").id;
-    let url = "api/comentario/" + id;
+    let url = "api/producto/" + id;
     fetch(url)
     .then(response => response.json())
-    .then(tareas => app.tasks = tareas)
+    .then(comment => app.comment = comment)
     //.then(function(json){
         //console.log(json.length);//devuelve cantidad del contenido de este llamado api, en este caso tiene un id, solo trae los que tiene id
       //  console.log(json);//este devuelve el contenido en forma de arreglo de json
@@ -53,23 +52,23 @@ function getTasks() {
     app.loged = log;
 }
 
-function addTask(){
+function addComment(){
     
-    let task = {
+    let comment = {
             comment: document.querySelector('#comment').value,
             score: document.querySelector('#score').value,
             id_product: document.querySelector(".ids").id 
     }
-    console.log(task);
-    fetch("api/comentario", {
+    console.log(comment);
+    fetch("api/producto", {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(task)
+        body: JSON.stringify(comment)
     })
 
     .then(response => response.json())
     .then(function(r){
-        getTasks();
+        getComment();
         })
     .catch(error => console.log(error));
 }

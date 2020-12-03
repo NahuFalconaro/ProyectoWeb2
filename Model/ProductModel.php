@@ -16,10 +16,11 @@ class ProductModel{
     function getProductsLimit($desde, $por_pagina){ 
         $sentencia = $this->db->prepare("SELECT product.*, category.* FROM product INNER JOIN category ON product.id_category = category.id_category LIMIT $desde, $por_pagina"); 
         $sentencia->execute(array($desde, $por_pagina)); 
-        return $sentencia->fetchAll(PDO::FETCH_OBJ); }
-    //terminar el like
+        return $sentencia->fetchAll(PDO::FETCH_OBJ); 
+    }
+
     function getSearchedProducts($namefield){
-        $sentencia = $this->db->prepare("SELECT product.*, category.* FROM product INNER JOIN category WHERE nombre LIKE '$namefield%'");
+        $sentencia = $this->db->prepare("SELECT product.*, category.* FROM product INNER JOIN category WHERE nombre LIKE '%$namefield%'");
         $sentencia->execute(array($namefield));
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
@@ -60,15 +61,23 @@ class ProductModel{
         $sentencia = $this->db->prepare("DELETE FROM product WHERE id_category = ?");
         $sentencia-> execute(array($id_category));
     }
-    function updateProduct($id_product, $nombre, $price, $stock, $descripcion, $imagen = null, $id_category){
+    function updateProduct($id_product, $nombre, $price, $stock, $descripcion, $id_category, $imagen = null){
         $pathImg = null;
             if ($imagen){
                 $pathImg = $this->uploadImage($imagen);
+                $sentencia = $this->db->prepare("UPDATE product SET nombre=?, price=?, stock=?, descripcion=?, imagen=?, id_category=? WHERE id_product = ?");
+                $sentencia->execute(array($nombre, $price, $stock, $descripcion, $id_category, $pathImg, $id_product));
+            }else{
+                $sentencia = $this->db->prepare("UPDATE product SET nombre=?, price=?, stock=?, descripcion=?, id_category=? WHERE id_product = ?");
+                $sentencia->execute(array($nombre, $price, $stock, $descripcion, $id_category, $id_product));
             }
-        $sentencia = $this->db->prepare("UPDATE product SET nombre=?, price=?, stock=?, descripcion=?, imagen=?, id_category=? WHERE id_product = ?");
-        $sentencia->execute(array($nombre, $price, $stock, $descripcion, $pathImg, $id_category,$id_product));
+    }
+    function searchPriceProducts($minPrice, $maxPrice){
+        $sentencia = $this->db->prepare("SELECT product.*, category.* FROM product INNER JOIN category WHERE price BETWEEN $minPrice AND $maxPrice");
+        $sentencia-> execute(array($minPrice, $maxPrice));
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 }
-//ANOTACIONES: busqueda por precio, y busqueda por nombre.
+
 
 ?>

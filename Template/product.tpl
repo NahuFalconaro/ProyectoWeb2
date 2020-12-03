@@ -20,9 +20,9 @@
         <div class="col-8">
         
         <h1 style="margin-top: 100px ;">Tabla de comentarios</h1>
+        <label class="loged" id="{$logged}"></label>
+        <label class="ids" id="{$Product->id_product}"></label>
         {if $logged==1}
-            <label class="loged" id="{$logged}"></label>
-            <label class="ids" id="{$Product->id_product}"></label>
             <div>
                     <form id="form-comment" action="insert" method="post">
                     <div class="form-group">

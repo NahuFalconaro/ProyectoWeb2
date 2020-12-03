@@ -37,8 +37,12 @@ class CategoryController{
     }
     function insertCategory(){
         $category = $_POST['nameCategory'];
-        $this->model->insertCategory($category);
-        $this->viewProduct->ShowHomeLocation();
+        if(!empty($category)){
+            $this->model->insertCategory($category);
+            $this->viewProduct->ShowHomeLocation();
+        }else{
+            $this->viewProduct->showError();
+        }
     }
 
     function deleteCategory($params = null){
@@ -51,8 +55,12 @@ class CategoryController{
     function updateCategory($params = null){
         $category_id = $params[':ID'];
         $nombre= $_POST['nombreUpdateCategory'];
-        $this->model->updateCategory($category_id,$nombre);
-        $this->viewProduct->ShowHomeLocation();
+        if(!empty($category_id) && !empty($nombre)){
+            $this->model->updateCategory($category_id,$nombre);
+            $this->viewProduct->ShowHomeLocation();
+        }else{
+            $this->viewProduct->showError();
+        }
     }
 }
 

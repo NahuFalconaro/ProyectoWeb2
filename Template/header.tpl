@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <base href="{BASE_URL}">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>documento</title>
@@ -21,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="navbar-brand" href="productos">Productos <span class="sr-only">(current)</span></a>
+                        <a class="navbar-brand" href="pagina/1">Productos <span class="sr-only">(current)</span></a>
                     </li>
                     {if $logged==0}
                         <li class="nav-item active">

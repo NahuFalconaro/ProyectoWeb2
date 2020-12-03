@@ -1,27 +1,29 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-28 15:27:23
-  from 'C:\xampp\htdocs\Web2FinalProject\ProyectoWeb2\Template\header.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-11-30 22:37:13
+  from 'C:\xampp\htdocs\Web2FinalProject\ProyectoWeb2\Template\error.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fc25e4bd2aa17_29373692',
+  'unifunc' => 'content_5fc56609636784_65004983',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '8592af66e1f93a5332f980e8dc7b13e88a0b2619' => 
+    '769540a376d56e3af7544fcd460d5abd65690a9e' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Web2FinalProject\\ProyectoWeb2\\Template\\header.tpl',
-      1 => 1606573642,
+      0 => 'C:\\xampp\\htdocs\\Web2FinalProject\\ProyectoWeb2\\Template\\error.tpl',
+      1 => 1606772229,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:./footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fc25e4bd2aa17_29373692 (Smarty_Internal_Template $_smarty_tpl) {
-?><!DOCTYPE html>
+function content_5fc56609636784_65004983 (Smarty_Internal_Template $_smarty_tpl) {
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -50,16 +52,9 @@ function content_5fc25e4bd2aa17_29373692 (Smarty_Internal_Template $_smarty_tpl)
                     <li class="nav-item active">
                         <a class="navbar-brand" href="pagina/1">Productos <span class="sr-only">(current)</span></a>
                     </li>
-                    <?php if ($_smarty_tpl->tpl_vars['logged']->value == 0) {?>
                         <li class="nav-item active">
                             <a class="navbar-brand" href="registro">Registrarse <span class="sr-only">(current)</span></a>
                         </li>
-                    <?php }?>
-                    <?php if ($_smarty_tpl->tpl_vars['logged']->value == 2) {?>
-                        <li class="nav-item active">
-                            <a class="navbar-brand" href="users">Usuarios <span class="sr-only">(current)</span></a>
-                        </li>
-                    <?php }?>
                     <li class="nav-item active">
                         <div class="container ">
                             <form action="searchProducts" method="POST" class="form-inline my-2 my-lg-0">
@@ -69,7 +64,6 @@ function content_5fc25e4bd2aa17_29373692 (Smarty_Internal_Template $_smarty_tpl)
                         </div>
                     </li>
                 </ul>
-                <?php if ($_smarty_tpl->tpl_vars['logged']->value == 0) {?>
                     <form action="verifyUser" method="POST" class="form-inline">
                         <div class="form-group mb-2">
                             <input type="text" class="form-control" name="user" placeholder="user">
@@ -79,11 +73,13 @@ function content_5fc25e4bd2aa17_29373692 (Smarty_Internal_Template $_smarty_tpl)
                         </div>
                         <button type="submit" class="btn btn-primary mb-2">Login</button>
                     </form>
-                <?php }?>
-                <?php if ($_smarty_tpl->tpl_vars['logged']->value == 1 || $_smarty_tpl->tpl_vars['logged']->value == 2) {?>
-                    <a href="logout" class="btn btn-danger">logout</a>
-                <?php }?>
-            </div>
         </nav>
-    </header><?php }
+    </header>
+
+<section>
+    <h3 style="margin-top: 280px; color:red">Campo/s Vacio/s</h3>
+</section>
+
+<?php $_smarty_tpl->_subTemplateRender('file:./footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}
 }

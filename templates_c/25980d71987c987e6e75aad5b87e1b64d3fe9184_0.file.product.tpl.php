@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-20 16:17:35
+/* Smarty version 3.1.34-dev-7, created on 2020-11-27 04:02:18
   from 'C:\xampp\htdocs\Web2FinalProject\ProyectoWeb2\Template\product.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fb7de0fb08a59_75340588',
+  'unifunc' => 'content_5fc06c3a0c5dc8_54593694',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '25980d71987c987e6e75aad5b87e1b64d3fe9184' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Web2FinalProject\\ProyectoWeb2\\Template\\product.tpl',
-      1 => 1605885452,
+      1 => 1606446134,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:./vue/vueComment.vue' => 1,
   ),
 ),false)) {
-function content_5fb7de0fb08a59_75340588 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fc06c3a0c5dc8_54593694 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:./header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="container-fluid">
@@ -53,11 +53,11 @@ $_smarty_tpl->_subTemplateRender('file:./header.tpl', $_smarty_tpl->cache_id, $_
         <div class="col-8">
         
         <h1 style="margin-top: 100px ;">Tabla de comentarios</h1>
+        <label class="loged" id="<?php echo $_smarty_tpl->tpl_vars['logged']->value;?>
+"></label>
+        <label class="ids" id="<?php echo $_smarty_tpl->tpl_vars['Product']->value->id_product;?>
+"></label>
         <?php if ($_smarty_tpl->tpl_vars['logged']->value == 1) {?>
-            <label class="loged" id="<?php echo $_smarty_tpl->tpl_vars['logged']->value;?>
-"></label>
-            <label class="ids" id="<?php echo $_smarty_tpl->tpl_vars['Product']->value->id_product;?>
-"></label>
             <div>
                     <form id="form-comment" action="insert" method="post">
                     <div class="form-group">

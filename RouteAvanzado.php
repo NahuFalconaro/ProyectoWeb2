@@ -28,6 +28,7 @@
     $r->addRoute("insertUser", "POST", "UserController", "insertUser");
     $r->addRoute("updateUser/:ID", "POST", "UserController", "updateUser");
     
+    $r->addRoute("searchPriceProducts", "POST", "ProductController", "searchPriceProducts");
     $r->addRoute("searchProducts", "POST", "ProductController", "searchProducts");
     $r->addRoute("pagina/:ID", "GET", "ProductController", "showProducts");
 

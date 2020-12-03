@@ -31,7 +31,7 @@ class ProductController{
             header("Location: ". BASE_URL);
             die();
         }else{
-            if ( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1000000)) { 
+            if ( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300000)) { 
                 header("Location: ". LOGOUT);
                 die();
             } 
@@ -53,32 +53,24 @@ class ProductController{
             return 0;
         }
     }
-    function showProducts(){
+    function showProducts($params = null){
+        $id = $params[':ID'];
         $Products = $this->model->getProducts();
         $Category = $this->modelCategory->getCategories();
         $CantidadProductos = count($Products);
         $logged = $this->getAccess();
         $por_pagina = 2;
-        if(empty($_GET['pagina'])){
+        if(empty($id)){
             $pagina = 1;
         }else{
-            $pagina = $_GET['pagina'];
+            $pagina = $id;
         }
-
         $desde = (($pagina-1) * $por_pagina);
         $total_paginas = ceil($CantidadProductos / $por_pagina);//ceil() redondea un número HACIA ARRIBA al entero más cercano.
         $showProduct = $this->model->getProductsLimit($desde, $por_pagina);
         $this->view->showProducts($showProduct,$total_paginas, $Category, $logged);
     }
 
-
-    function get(){
-        $limite = $_POST['limite'];
-        $Products = $this->model->getProducts($limite);
-        $Category = $this->modelCategory->getCategories();
-        $logged = $this->getAccess();
-        $this->view->showProducts($Products, $Category, $logged);
-    }
     
     function showProduct($params = null){
         $id = $params[':ID'];
@@ -100,11 +92,15 @@ class ProductController{
             $stock = $_POST['stock'];
             $descripcion = $_POST['descripcion'];
             $id_category = $_POST['category'];
-            if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" 
+            if(!empty($nombre) && !empty($price) && !empty($stock) && !empty($descripcion) && !empty($id_category)){
+                if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" 
                     || $_FILES['input_name']['type'] == "image/png" ) {
                 $this->model->insertProduct($nombre, $price, $stock, $descripcion, $_FILES['input_name']['tmp_name'], $id_category);   
                 $this->view->ShowHomeLocation();
+                }else{
+                    $this->view->showError();
                 }
+            }
 
     }
     function searchProducts($params = null){
@@ -120,7 +116,7 @@ class ProductController{
         $this->model->deleteProduct($id);
         $this->view->ShowHomeLocation();
     }
-
+    
     function updateProduct($params = null){
         $this->checkLoggedIn();
         $id = $params[':ID'];
@@ -129,11 +125,32 @@ class ProductController{
         $stock = $_POST['stockUpdate'];
         $descripcion = $_POST['descripcionUpdate'];
         $id_category = $_POST['categoryUpdate'];
-        if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" 
-                    || $_FILES['imagen']['type'] == "image/png" ) {
-                        $this->model->updateProduct($id, $nombre, $price, $stock, $descripcion, $_FILES['imagen']['tmp_name'], $id_category);
-                        $this->view->ShowHomeLocation();
+        $imagenVieja = $_POST['image'];
+        $imagenNueva = $_FILES['imagen']['tmp_name']; 
+        //pregunto por imagen nueva 
+        if(empty($imagenNueva)){
+                $this->model->updateProduct($id, $nombre, $price, $stock, $descripcion, $id_category);
+                $this->view->ShowHomeLocation();
+        }else{
+            $this->model->updateProduct($id, $nombre, $price, $stock, $descripcion, $id_category, $imagenNueva);
+            $this->view->ShowHomeLocation();
         }
     }
+    function searchPriceProducts(){
+        $logged = $this->getAccess();
+        $minPrice = $_POST['minPrice'];
+        $maxPrice = $_POST['maxPrice'];
+        if(empty($minPrice)){
+            $minPrice = 0;
+        }
+        if(empty($maxPrice)){
+            $maxPrice = 999999;
+        }
+        $Searching = $this->model->searchPriceProducts($minPrice, $maxPrice);
+        $this->view->showProductsSearched($Searching, $logged);
+    }
 }
+//UPDATE:problema que si no le pasa una foto, no realiza la funcion.
+
+
 ?>
