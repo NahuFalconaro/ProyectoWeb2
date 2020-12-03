@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-10-15 03:15:35
+/* Smarty version 3.1.34-dev-7, created on 2020-12-03 01:09:45
   from 'C:\xampp\htdocs\web2\ProyectoWeb2\Template\products.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f87a2b7199ba8_18905928',
+  'unifunc' => 'content_5fc82cc9399d77_33451567',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4580f8a95a2736cc6d7bd0e904b9a8d3c4d5c829' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\ProyectoWeb2\\Template\\products.tpl',
-      1 => 1602724147,
+      1 => 1606954155,
       2 => 'file',
     ),
   ),
@@ -22,18 +22,25 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:./footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f87a2b7199ba8_18905928 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fc82cc9399d77_33451567 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:./header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <section>
     <div class="container " >
-    <?php if ($_smarty_tpl->tpl_vars['logged']->value == 1) {?>
+    <?php if ($_smarty_tpl->tpl_vars['logged']->value == 2) {?>
         <h2 class="marginSection">Lista de productos</h2>
         <?php } else { ?>
         <h2 class="form">Lista de productos</h2>
     <?php }?>
-        <?php if ($_smarty_tpl->tpl_vars['logged']->value == 1) {?>
-            <form action="insert" method="POST" >
+    <div class="container ">
+        <form action="searchPriceProducts" method="POST" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" name="minPrice" placeholder="Precio Minimo" aria-label="Search">
+            <input class="form-control mr-sm-2" name="maxPrice" placeholder="Precio Maximo" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+    </div>
+        <?php if ($_smarty_tpl->tpl_vars['logged']->value == 2) {?>
+            <form action="insert" method="POST" enctype="multipart/form-data" >
                 <div class="form-row  marginSection"  >
                     <div class="col">
                         <input type="text" class="form-control" name="nombre" placeholder="Nombre Producto">
@@ -48,48 +55,49 @@ $_smarty_tpl->_subTemplateRender('file:./header.tpl', $_smarty_tpl->cache_id, $_
                         <input type="text" class="form-control" name="descripcion" placeholder="Descripcion">
                     </div>
                     <div>
-                        <select name="category" class="form-control">
-                            <?php
+                    <select name="category" class="form-control">
+                    <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['Category']->value, 'category');
 $_smarty_tpl->tpl_vars['category']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['category']->value) {
 $_smarty_tpl->tpl_vars['category']->do_else = false;
 ?>
-                                <option value="<?php echo $_smarty_tpl->tpl_vars['category']->value->id_category;?>
+                        <option value="<?php echo $_smarty_tpl->tpl_vars['category']->value->id_category;?>
 "><?php echo $_smarty_tpl->tpl_vars['category']->value->category;?>
 </option>
-                            <?php
+                    <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                        </select>
+                    </select>
                     </div>
                     <div class="col">
-                        <button type="submit" class="btn btn-outline-dark">Insertar</button>
+                        <input type="file" class="form-control uploadImagen" name="input_name" id="imagenUpload" >
                     </div>
                 </div>
+                    <div class="col" style="padding: 0;">
+                        <button type="submit" class="btn btn-outline-dark btn-insert">Insertar</button>
+                    </div>
             </form>
         <?php }?>
     </div>
     
+
     <div class="container ">
-    
-    
-    <?php if ($_smarty_tpl->tpl_vars['logged']->value == 1) {?>
+    <div class="container "> 
+    <?php if ($_smarty_tpl->tpl_vars['logged']->value == 2) {?>
         <table class="table table-striped table-dark tabla table-responsive-md marginSection" >
     <?php } else { ?>
         <table class="table table-striped table-dark tabla table-responsive-md marginSection">
     <?php }?> 
-
             <thead class="thead-dark">
-        
                 <tr>
-
+                    <th scope="col">imagen</th>
                     <th scope="col">nombre</th>
                     <th scope="col">precio</th>
                     <th scope="col">stock</th>
                     <th scope="col">category</th>
                     <th scope="col">ver mas</th>
-                    <?php if ($_smarty_tpl->tpl_vars['logged']->value == 1) {?>
+                    <?php if ($_smarty_tpl->tpl_vars['logged']->value == 2) {?>
                         <th scope="col">Delete</th>
                         <th scope="col">Update</th>
                     <?php }?>
@@ -103,6 +111,8 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['product']->value
 $_smarty_tpl->tpl_vars['product']->do_else = false;
 ?>
                     <tr>
+                        <th scope="col"><img src="<?php echo $_smarty_tpl->tpl_vars['product']->value->imagen;?>
+" class="card-img-top" alt="Card image cap"></th>
                         <th scope="col"><?php echo $_smarty_tpl->tpl_vars['product']->value->nombre;?>
 </th>
                         <th scope="col"><?php echo $_smarty_tpl->tpl_vars['product']->value->price;?>
@@ -114,14 +124,14 @@ $_smarty_tpl->tpl_vars['product']->do_else = false;
                         <th scope="col"><a href="productos/<?php echo $_smarty_tpl->tpl_vars['product']->value->id_product;?>
 " class="btn btn-dark" value="<?php echo $_smarty_tpl->tpl_vars['product']->value->id_product;?>
 ">Descripcion</a></th>
-                        <?php if ($_smarty_tpl->tpl_vars['logged']->value == 1) {?>
+                        <?php if ($_smarty_tpl->tpl_vars['logged']->value == 2) {?>
                             <th scope="col"><a href="delete/<?php echo $_smarty_tpl->tpl_vars['product']->value->id_product;?>
 " class="btn btn-dark" value="<?php echo $_smarty_tpl->tpl_vars['product']->value->id_product;?>
 ">Eliminar</a></th>
                             <th><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal<?php echo $_smarty_tpl->tpl_vars['product']->value->id_product;?>
 ">Modificar</button></th>
                             <div class="modal fade" id="exampleModal<?php echo $_smarty_tpl->tpl_vars['product']->value->id_product;?>
-" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+" tabindex="-2" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -132,7 +142,7 @@ $_smarty_tpl->tpl_vars['product']->do_else = false;
                                         </div>
                                         <div class="modal-body">
                                             <form action="update/<?php echo $_smarty_tpl->tpl_vars['product']->value->id_product;?>
-" method="POST" class="container">
+" method="POST" class="container" enctype="multipart/form-data">
         
                                                 <div class="form-group">
         
@@ -151,6 +161,13 @@ $_smarty_tpl->tpl_vars['product']->do_else = false;
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="text" class="form-control" name="descripcionUpdate" value="<?php echo $_smarty_tpl->tpl_vars['product']->value->descripcion;?>
+">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="hidden" class="form-control" name="image" id="image" value="<?php echo $_smarty_tpl->tpl_vars['product']->value->imagen;?>
+">
+                                                    <input type="file" class="form-control" name="imagen" id="imagenUpload" value="<?php echo $_smarty_tpl->tpl_vars['product']->value->imagen;?>
+" placeholder="<?php echo $_smarty_tpl->tpl_vars['product']->value->imagen;?>
 ">
                                                 </div>
                                                 <div>
@@ -184,9 +201,23 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </tbody>
-
+ 
     <table class="table table-striped table-dark tabla table-responsive-md margentabla">
-        <?php if ($_smarty_tpl->tpl_vars['logged']->value == 1) {?>
+    <div class="paginador">
+        <ul>        <?php
+$_smarty_tpl->tpl_vars['foo'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['foo']->step = 1;$_smarty_tpl->tpl_vars['foo']->total = (int) ceil(($_smarty_tpl->tpl_vars['foo']->step > 0 ? $_smarty_tpl->tpl_vars['CantidadProductos']->value+1 - (1) : 1-($_smarty_tpl->tpl_vars['CantidadProductos']->value)+1)/abs($_smarty_tpl->tpl_vars['foo']->step));
+if ($_smarty_tpl->tpl_vars['foo']->total > 0) {
+for ($_smarty_tpl->tpl_vars['foo']->value = 1, $_smarty_tpl->tpl_vars['foo']->iteration = 1;$_smarty_tpl->tpl_vars['foo']->iteration <= $_smarty_tpl->tpl_vars['foo']->total;$_smarty_tpl->tpl_vars['foo']->value += $_smarty_tpl->tpl_vars['foo']->step, $_smarty_tpl->tpl_vars['foo']->iteration++) {
+$_smarty_tpl->tpl_vars['foo']->first = $_smarty_tpl->tpl_vars['foo']->iteration === 1;$_smarty_tpl->tpl_vars['foo']->last = $_smarty_tpl->tpl_vars['foo']->iteration === $_smarty_tpl->tpl_vars['foo']->total;?>
+            <li><a href="pagina/<?php echo $_smarty_tpl->tpl_vars['foo']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['foo']->value;?>
+</a></li>
+        <?php }
+}
+?>
+        </ul>
+    </div>
+        <?php if ($_smarty_tpl->tpl_vars['logged']->value == 2) {?>
             <form action="insertCategory" method="POST">
                 <div class="form-row ">
                     <div class="col">
@@ -198,13 +229,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 </div>
             </form>
         <?php }?>
-        <h2>Lista de categorias</h2>
         <p>Haz click en el nombre de las categorias para ver que productos contiene cada una!</p>
         <thead class="thead-dark">
             <tr>
 
                 <th scope="col">nombre</th>
-                <?php if ($_smarty_tpl->tpl_vars['logged']->value == 1) {?>
+                <?php if ($_smarty_tpl->tpl_vars['logged']->value == 2) {?>
                     <th scope="col">eliminar</th>
                     <th scope="col">modificar</th>
                 <?php }?>
@@ -222,14 +252,14 @@ $_smarty_tpl->tpl_vars['category']->do_else = false;
                     <th scope="col"><a href="category/<?php echo $_smarty_tpl->tpl_vars['category']->value->id_category;?>
 "  class="letterCategory"><?php echo $_smarty_tpl->tpl_vars['category']->value->category;?>
 </a></th>
-                    <?php if ($_smarty_tpl->tpl_vars['logged']->value == 1) {?>
+                    <?php if ($_smarty_tpl->tpl_vars['logged']->value == 2) {?>
                         <th scope="col"><a href="deleteCategory/<?php echo $_smarty_tpl->tpl_vars['category']->value->id_category;?>
 " class="btn btn-dark" value="<?php echo $_smarty_tpl->tpl_vars['category']->value->id_category;?>
 ">Eliminar</a></th>
                         <th><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal<?php echo $_smarty_tpl->tpl_vars['category']->value->id_category;?>
 ">Modificar</button></th>
                         <div class="modal fade" id="exampleModal<?php echo $_smarty_tpl->tpl_vars['category']->value->id_category;?>
-" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+" tabindex="-2" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">

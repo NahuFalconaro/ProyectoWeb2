@@ -125,7 +125,6 @@ class ProductController{
         $stock = $_POST['stockUpdate'];
         $descripcion = $_POST['descripcionUpdate'];
         $id_category = $_POST['categoryUpdate'];
-        $imagenVieja = $_POST['image'];
         $imagenNueva = $_FILES['imagen']['tmp_name']; 
         //pregunto por imagen nueva 
         if(empty($imagenNueva)){

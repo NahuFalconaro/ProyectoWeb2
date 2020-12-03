@@ -66,7 +66,7 @@ class ProductModel{
             if ($imagen){
                 $pathImg = $this->uploadImage($imagen);
                 $sentencia = $this->db->prepare("UPDATE product SET nombre=?, price=?, stock=?, descripcion=?, imagen=?, id_category=? WHERE id_product = ?");
-                $sentencia->execute(array($nombre, $price, $stock, $descripcion, $id_category, $pathImg, $id_product));
+                $sentencia->execute(array($nombre, $price, $stock, $descripcion,$pathImg, $id_category, $id_product));
             }else{
                 $sentencia = $this->db->prepare("UPDATE product SET nombre=?, price=?, stock=?, descripcion=?, id_category=? WHERE id_product = ?");
                 $sentencia->execute(array($nombre, $price, $stock, $descripcion, $id_category, $id_product));
